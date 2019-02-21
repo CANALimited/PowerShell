@@ -13,11 +13,26 @@
 
 $GivenName
 $FirstName="Justin"
-$SirName="Holmes"
+$SirName="Van-Holmes"
 $UserName
 $namecheck
 
 
+
+Function test-verbose
+{
+	Param ([switch]$verbose)
+	if ($verbose)
+	{
+#		$oldverbose = $VerbosePreference
+		$VerbosePreference = "continue"
+	}
+	Write-Verbose "verbose output enabled"
+	"Regular output"
+#	$VerbosePreference = $oldverbose
+	
+}
+test-verbose
 
 function MakeUsername ()
 {
@@ -27,8 +42,8 @@ function MakeUsername ()
 function ValidateUserName {
 	
 	$UserName = $UserName.ToLower()
-	if ($UserName -match "\s") { Write-host "This UserName contains a white space" }
-	if ($UserName -match "-") { Write-host "This UserName contains a dash" }
+	if ($UserName -match "\s") { write-verbose "This User Name contains a white space" }
+	if ($UserName -match "-") { Write-Information "The User Name $UserName contains a dash" }
 	Write-Verbose $UserName
 	
 	$UserName = $UserName -replace '(\s)', ''
