@@ -1,18 +1,4 @@
-﻿<#	
-	.NOTES
-	===========================================================================
-	 Created with: 	SAPIEN Technologies, Inc., PowerShell Studio 2019 v5.6.156
-	 Created on:   	01/07/2019 11:07 AM
-	 Created by:   	admJustin
-	 Organization: 	
-	 Filename:     	
-	===========================================================================
-	.DESCRIPTION
-		A description of the file.
-#>
-
-
-<#
+﻿<#
 .SYNOPSIS
 Domain name WhoIs
 .DESCRIPTION
