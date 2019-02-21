@@ -13,21 +13,27 @@
 
 $GivenName
 $FirstName="Justin"
-$SirName="Van Holmes"
+$SirName="Holmes"
 $UserName
+$namecheck
 
 
 
-function MakeUsername () {
+function MakeUsername ()
+{
 	$UserName = $SirName + $FirstName.substring(0, 1)
+	ValidateUserName
+}
+function ValidateUserName {
+	
 	$UserName = $UserName.ToLower()
 	if ($UserName -match "\s") { Write-host "This UserName contains a white space" }
 	if ($UserName -match "-") { Write-host "This UserName contains a dash" }
-	Write-Host $UserName
+	Write-Verbose $UserName
 	
 	$UserName = $UserName -replace '(\s)', ''
 	
-	Write-Host $UserName
+	Write-Verbose $UserName
 	
 	CheckUserName
 }
@@ -35,14 +41,26 @@ function MakeUsername () {
 function CheckUserName ()
 {
 	
-	$user = Get-ADUser -filter { sAMAccountName -eq $UserName }
-	
-	if (!$user)
+try
 	{
-		Write-Error "This username does not exist"
-		exit # or return, whatever is appropriate
+		$namecheck  = get-aduser -filter { samaccountname -like $UserName }
+	}
+	catch [Microsoft.ActiveDirectory.Management.ADIdentityNotFoundException]
+	{ }
+	
+	if ($namecheck.Enabled -eq $true)
+	{
+		Write-Verbose "$UserName is in use"
+		$UserName = $SirName + $FirstName.substring(0, 2)
+		Write-Verbose "trying username $UserName"
+		ValidateUserName
+		
 	}
 	
+	else
+	{
+		Write-Verbose "$UserName is avalable"
+	}
 	
 }
 

@@ -24,6 +24,26 @@ function MakeUsername () {
 	if ($UserName -match "\s") { Write-host "This UserName contains a white space" }
 	if ($UserName -match "-") { Write-host "This UserName contains a dash" }
 	Write-Host $UserName
+	
+	$UserName = $UserName -replace '(\s)', ''
+	
+	Write-Host $UserName
+	
+	CheckUserName
+}
+
+function CheckUserName ()
+{
+	
+	$user = Get-ADUser -filter { sAMAccountName -eq $UserName }
+	
+	if (!$user)
+	{
+		Write-Error "This username does not exist"
+		exit # or return, whatever is appropriate
+	}
+	
+	
 }
 
 MakeUsername
