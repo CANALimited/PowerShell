@@ -34,9 +34,18 @@ function Write-InVerboseMode
 #This function will take the $FirstName & #SirName and convert it to the username SirName+First Letter of First Name#
 function MakeUsername ()
 {
-	
 	[CmdletBinding()]
-	PARAM ()
+	param (
+		[string]$GivenName = "Message",
+		[Parameter(Mandatory = $false)]
+		[string]$FirstName = "Message",
+		[Parameter(Mandatory = $true)]
+		[string]$SirName = "Message",
+		[Parameter(Mandatory = $true)]
+		[string]$UserName = "Message",
+		[Parameter(Mandatory = $false)]
+	)
+		
 	Write-Debug "Given name is $($GivenName)"
 	Write-Debug "First name is $($FirstName)"
 	Write-Debug "Last name is $($SirName)"

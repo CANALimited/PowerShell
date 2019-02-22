@@ -23,6 +23,16 @@
 
 
 #Explicitly import the module for testing
-Import-Module 'CANANewUser'
+Import-Module 'CANANewUser' -force
 
 Write-Host "Hello World"
+
+$GivenName = "Dan"
+$FirstName = "Justin"
+$SirName = "Holmes"
+$UserName = "Fun"
+
+Get-Command -Module CANANewUser
+MakeUsername
+ValidateUserName
+CheckUserName
