@@ -25,4 +25,3 @@
 #Explicitly import the module for testing
 Import-Module 'CANANewUser'
 
-Write-Host "Hello World"
