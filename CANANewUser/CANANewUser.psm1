@@ -5,6 +5,8 @@
 	 Created by:   	Justin Holmes
 	 Organization: 	CANA IT
 	 Filename:     	CANANewUser.pms1
+	-------------------------------------------------------------------------
+	 Module Name: CANANewUser
 	===========================================================================
 	.DESCRIPTION
 		A description of the file.
@@ -45,12 +47,13 @@ function MakeUsername ()
 	Write-Debug "User name is now $($UserName)"
 	Write-Verbose "User name is now $($UserName)"
 	Write-Debug "Moving to function ValidateUserName"
-
+	
 }
 
 #This function will check the username for whitespace or dashs.  White space will be removed, dashs just throw an information warning (as requested)#
-function ValidateUserName {
-
+function ValidateUserName
+{
+	
 	$UserName = $UserName.ToLower()
 	if ($UserName -match "\s") { write-verbose "This User Name contains a white space" }
 	if ($UserName -match "-") { Write-Information "The User Name $($UserName) contains a dash" }
@@ -60,17 +63,17 @@ function ValidateUserName {
 	
 	Write-Verbose $UserName
 	
-
+	
 }
 
 #This function will check if the $UserName exists.  If it does it will add the 2nd letter from the $FirstName to the end of the $UserName#
 function CheckUserName ()
 {
-
 	
-try
+	
+	try
 	{
-		$namecheck  = get-aduser -filter { samaccountname -like $UserName }
+		$namecheck = get-aduser -filter { samaccountname -like $UserName }
 	}
 	catch [Microsoft.ActiveDirectory.Management.ADIdentityNotFoundException]
 	{ }
