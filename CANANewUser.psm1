@@ -4,17 +4,13 @@
 	 Created on:   	02/19/2019 11:58 AM
 	 Created by:   	Justin Holmes
 	 Organization: 	CANA IT
-	 Filename:     	NewUser.ps1
+	 Filename:     	CANANewUser.pms1
 	===========================================================================
 	.DESCRIPTION
 		A description of the file.
 #>
 
-$GivenName="Dan"
-$FirstName="Justin"
-$SirName="Van Holmes"
-$UserName
-$namecheck
+
 
 
 
