@@ -44,7 +44,6 @@ function MakeUsername ()
 		[Parameter(Mandatory = $true)]
 		[string]$UserName = "Message",
 		[Parameter(Mandatory = $false)]
-	)
 		
 	Write-Debug "Given name is $($GivenName)"
 	Write-Debug "First name is $($FirstName)"
@@ -60,7 +59,7 @@ function MakeUsername ()
 }
 
 #This function will check the username for whitespace or dashs.  White space will be removed, dashs just throw an information warning (as requested)#
-function ValidateUserName
+function Check-ValidateUserName
 {
 	
 	$UserName = $UserName.ToLower()
@@ -76,7 +75,7 @@ function ValidateUserName
 }
 
 #This function will check if the $UserName exists.  If it does it will add the 2nd letter from the $FirstName to the end of the $UserName#
-function CheckUserName ()
+function Check-UserName ()
 {
 	
 	
@@ -102,6 +101,35 @@ function CheckUserName ()
 	}
 	
 }
-
+	
+	
+<#
+	.SYNOPSIS
+		Checks for the Active Directory Module is avaiable
+	
+	.DESCRIPTION
+		A detailed description of the Check-ADModule function.
+	
+	.EXAMPLE
+				PS C:\> Check-ADModule
+	
+	.NOTES
+		Additional information about the function.
+#>
+	function Check-ADModule
+	{
+		[CmdletBinding()]
+		[OutputType([bool])]
+		param ()
+		
+		if (Get-Module -Name ActiveDirectory)
+		{
+			
+			
+			
+		}
+		
+	}
+	
 
 
