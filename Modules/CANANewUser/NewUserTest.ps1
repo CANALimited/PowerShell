@@ -23,7 +23,7 @@
 
 
 #Explicitly import the module for testing
-Import-Module 'CANANewUser' -force
+Import-Module "\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\CANANewUser.psm1" -force
 
 Write-Host "Hello World"
 
@@ -31,8 +31,12 @@ $GivenName = "Dan"
 $FirstName = "Justin"
 $SirName = "Holmes"
 $UserName = "Fun"
+$DomainController1 = "vcana-dc01"
+$DomainController2 = "vcana-dc02"
 
 Get-Command -Module CANANewUser
-MakeUsername
-ValidateUserName
-CheckUserName
+MakeUsername -FirstName $FirstName -SirName $SirName -Verbose
+
+Check-ValidateUserName
+Enter-DomainController $DomainController1 $DomainController2
+Check-UserName $RemoteDC $UserName

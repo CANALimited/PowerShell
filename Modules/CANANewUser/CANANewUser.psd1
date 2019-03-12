@@ -19,7 +19,7 @@
 	ModuleToProcess = 'CANANewUser.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '1.0.0.0'
+	ModuleVersion = '1.0.0.1'
 	
 	# ID used to uniquely identify this module
 	GUID = '67e009ca-221c-4378-9f4b-fb5e2a4fc12d'

@@ -35,7 +35,17 @@ function Write-InVerboseMode
 function MakeUsername ()
 {
 	[CmdletBinding()]
-	param ()
+	param (
+		[parameter(Mandatory=$false)]
+		[string]$GivenName,
+		[parameter(Mandatory=$true)]
+		[string]$FirstName,
+		[parameter(Mandatory=$true)]
+		[string]$SirName,
+		[parameter(Mandatory=$false)]
+		[string]$UserName
+
+		)
 		
 	Write-Debug "Given name is $($GivenName)"
 	Write-Debug "First name is $($FirstName)"
@@ -43,18 +53,19 @@ function MakeUsername ()
 	Write-Debug "User name is $($UserName)"
 	
 	$UserName = $SirName + $FirstName.substring(0, 1)
+	$UserName = $UserName.ToLower()
 	
 	Write-Debug "User name is now $($UserName)"
 	Write-Verbose "User name is now $($UserName)"
-	Write-Debug "Moving to function ValidateUserName"
+	#Write-Debug "Moving to function ValidateUserName"
 	
 }
 
 #This function will check the username for whitespace or dashs.  White space will be removed, dashs just throw an information warning (as requested)#
-function ValidateUserName
+function Check-ValidateUserName
 {
 	
-	$UserName = $UserName.ToLower()
+	#$UserName = $UserName.ToLower()
 	if ($UserName -match "\s") { write-verbose "This User Name contains a white space" }
 	if ($UserName -match "-") { Write-Information "The User Name $($UserName) contains a dash" }
 	Write-Verbose $UserName
@@ -67,32 +78,46 @@ function ValidateUserName
 }
 
 #This function will check if the $UserName exists.  If it does it will add the 2nd letter from the $FirstName to the end of the $UserName#
-function CheckUserName ()
+	function Check-UserName ()
+	{
+		Invoke-Command -Session $RemoteDC -ScriptBlock {
+			
+			try
+			{
+				$namecheck = get-aduser -filter { samaccountname -like $UserName }
+			}
+			catch [Microsoft.ActiveDirectory.Management.ADIdentityNotFoundException]
+			{ }
+			
+			if ($namecheck.Enabled -eq $true)
+			{
+				Write-Verbose "$UserName is in use"
+				$UserName = $SirName + $FirstName.substring(0, 2)
+				Write-Verbose "trying username $UserName"
+				ValidateUserName
+				
+			}
+			
+			else
+			{
+				Write-Verbose "$UserName is avalable"
+			}
+			
+			
+		}
+	}
+	
+	
+
+
+
+
+function Enter-DomainController
 {
+	[CmdletBinding()]
+	param ()
+	$DC1 = test-connection -quiet -ComputerName $DomainController1
+	$DC2 = test-connection -quiet -ComputerName $DomainController2
 	
-	
-	try
-	{
-		$namecheck = get-aduser -filter { samaccountname -like $UserName }
-	}
-	catch [Microsoft.ActiveDirectory.Management.ADIdentityNotFoundException]
-	{ }
-	
-	if ($namecheck.Enabled -eq $true)
-	{
-		Write-Verbose "$UserName is in use"
-		$UserName = $SirName + $FirstName.substring(0, 2)
-		Write-Verbose "trying username $UserName"
-		ValidateUserName
-		
-	}
-	
-	else
-	{
-		Write-Verbose "$UserName is avalable"
-	}
-	
+	$RemoteDC = New-PSSession -ComputerName $DomainController1 -Credential canagroup\admjustin
 }
-
-
-
