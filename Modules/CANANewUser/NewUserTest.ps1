@@ -39,4 +39,4 @@ MakeUsername -FirstName $FirstName -SirName $SirName -Verbose
 
 Check-ValidateUserName
 Enter-DomainController $DomainController1 $DomainController2
-Check-UserName $RemoteDC $UserName
+Check-UserName
