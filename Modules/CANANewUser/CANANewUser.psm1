@@ -279,7 +279,7 @@ function Enter-Exchange
 	Write-debug "Testing $($Exchange2) for connectivity"
 	$EX2 = test-connection -quiet -ComputerName $Exchange2
 	Write-debug "Domain Controller $($Exchange2) availability is $($EX2)"
-	$script:RemoteDC = New-PSSession -ComputerName $Exchange1 -Credential canagroup\admjustin
+	$script:RemoteEX = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri http://vCANAEXCH-01/PowerShell/ -Authentication Kerberos -Credential canagroup\admjustin
 	
 }
 
