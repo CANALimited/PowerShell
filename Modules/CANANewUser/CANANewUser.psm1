@@ -146,37 +146,42 @@ function Check-ValidateUserName
 	Write-Verbose $script:UserName
 	Write-Debug $script:UserName
 	Write-Debug "Opening PSSession with $($RemoteDC)"
-	Invoke-Command -Session $RemoteDC -ScriptBlock {
-		$DCFirstName = $Using:FirstName
-		$DCSirName = $Using:SirName
-		$DCUserName = $Using:UserName
+	Invoke-Command -Session $script:RemoteDC -ScriptBlock {
+	$DCUsername = $script:UserName
 			try
-			{
-				$namecheck = get-aduser -filter { samaccountname -like $DCUserName }
+		{
+			Write-Debug "Checking with Active Directory for $($DCUsername)"
+				$namecheck = get-aduser -filter { samaccountname -like $DCUsername }
 			}
 			catch [Microsoft.ActiveDirectory.Management.ADIdentityNotFoundException]
 			{ }
-
 		
+			Write-Debug "AD replied, checking if True or False"
 			if ($namecheck.Enabled -eq $true)
 			{
-				Write-Verbose "UserName is in use"
-			$DCUserName = $DCSirName + $DCFirstName.substring(0, 2)
-			Write-Verbose "trying username $DCUserName"
-			Write-Debug "trying username $DCUserName"
-
+			
+			
+			Write-Verbose "UserName $($DCUsername) is in use $($namecheck.Enabled)"
+			#$DCUserName = $DCSirName + $DCFirstName.substring(0, 2)
+			#Write-Verbose "trying username $DCUserName"
+			#Write-Debug "trying username $DCUserName"
+			Write-Verbose "Exiting from Check-UserName"
+				Exit
 				
 			}
 			
 			else
 			{
-			Write-Verbose "$DCUserName is avalable"
-			Write-Debug "$DCUserName is avalable"
+			Write-Verbose "$DCUsername is avalable"
+			Write-Debug "$DCUsername is avalable"
 			}
 		
 		
 	}
+	Write-Debug "Closing PSSession with Exit-PSSession"
 	Exit-PSSession
+	Write-Debug "Closed PSSession"
+	Write-Debug "Done Check-UserName"
 }
 
 
@@ -223,7 +228,32 @@ function Enter-DomainController
 	Write-debug "Testing $($DomainController1) for connectivity"
 	$DC2 = test-connection -quiet -ComputerName $DomainController2
 	Write-debug "Domain Controller $($DomainController2) availability is $($DC2)"
-	
+	If ($DC1 = $false)
+	{
+		Write-Debug "$($DomainController1) is unavialable"
+		Write-Debug "Test-Connection was $($DC1)"
+		Write-Debug "Trying $($DomainController2)"
+		If ($DC2 = $false)
+		{
+			Write-Debug "No provided Domain Controllers connectable"
+			Write-Error "No provided Domain Controllers connectable"
+			Write-Debug "Exiting!"
+			Exit
+		}
+		Else
+		{
+			Write-Debug "$($DomainController2) is aviablable"
+			Write-Debug "Setting RemoteDC to $($DomainController2)"
+			$RemoteDC = $DomainController2
+		}
+	}
+	Else
+	{
+		Write-Debug "$($DomainController1) is aviablable"
+		Write-Debug "Setting RemoteDC to $($DomainController1)"
+		$RemoteDC = $DomainController1
+	}
+		
 	Write-Debug "Requesting Username\Password"
 	$PSCredUser = Read-Host "Username to connect to $($DomainController1 )"
 	$PSCredPass = Read-Host -AsSecureString "Password to connect to $($DomainController1)"
