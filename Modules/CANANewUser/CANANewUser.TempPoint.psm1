@@ -16,7 +16,39 @@
 
 
 
+function Write-InVerboseMode
+{
+	<#
+.SYNOPSIS
+    
+.DESCRIPTION
+    
+.NOTES
+    
+.LINK
+    
+.EXAMPLE
+    
+.EXAMPLE
+    
+.INPUTTYPE
+   
+.RETURNVALUE
 
+.COMPONENT
+#>
+	[CmdletBinding()]
+	Param
+	(
+		[parameter(Position = 0, Mandatory = $true)]
+		[ValidateNotNullOrEmpty()]
+		[String]$text
+	)
+	Process
+	{
+		Write-Verbose $text
+	}
+}
 
 #This function will take the $FirstName & #SirName and convert it to the username SirName+First Letter of First Name#
 function MakeUsername ()
@@ -90,28 +122,13 @@ function Check-ValidateUserName
 .COMPONENT
 #>
 	#$script:UserName = $script:UserName.ToLower()
-	if ($script:UserName -match "\s")
-	{
-		Write-Debug "Matched whitespace"
-		write-verbose "This User Name contains a white space"
-		Write-Verbose "Removing whitespace from username $($script:UserName)"
-		$script:UserName = $script:UserName -replace '(\s)', ''
-		Write-Debug "Removed whitespace"
-		Write-Verbose "Username is now $($script:UserName)"
-	}
-	if ($script:UserName -match "-")
-	{
-		Write-Debug "Username has DASH in it"
-		Write-Information "The User Name $($script:UserName) contains a dash"
-		Write-Verbose "Username is $($script:UserName)"
-		Write-Debug "Cool, don't care about DASHES"
-	}
-	Write-Debug "Passed IFs on Username"
-	Write-Verbose "Username $($script:UserName) is OK!"
-	Write-Debug "Done Check-ValidateUserName"
-
+	if ($script:UserName -match "\s") { write-verbose "This User Name contains a white space" }
+	if ($script:UserName -match "-") { Write-Information "The User Name $($script:UserName) contains a dash" }
+	Write-Verbose '$script:UserName'
 	
+	$script:UserName = $script:UserName -replace '(\s)', ''
 	
+	Write-Verbose $script:UserName
 	
 	
 }
@@ -143,9 +160,7 @@ function Check-ValidateUserName
 
 	)
 	
-	Write-Verbose $script:UserName
-	Write-Debug $script:UserName
-	Write-Debug "Opening PSSession with $($RemoteDC)"
+	Write-Host $script:UserName
 	Invoke-Command -Session $RemoteDC -ScriptBlock {
 		$DCFirstName = $Using:FirstName
 		$DCSirName = $Using:SirName
@@ -163,7 +178,6 @@ function Check-ValidateUserName
 				Write-Verbose "UserName is in use"
 			$DCUserName = $DCSirName + $DCFirstName.substring(0, 2)
 			Write-Verbose "trying username $DCUserName"
-			Write-Debug "trying username $DCUserName"
 
 				
 			}
@@ -171,7 +185,6 @@ function Check-ValidateUserName
 			else
 			{
 			Write-Verbose "$DCUserName is avalable"
-			Write-Debug "$DCUserName is avalable"
 			}
 		
 		
@@ -223,16 +236,7 @@ function Enter-DomainController
 	Write-debug "Testing $($DomainController1) for connectivity"
 	$DC2 = test-connection -quiet -ComputerName $DomainController2
 	Write-debug "Domain Controller $($DomainController2) availability is $($DC2)"
-	
-	Write-Debug "Requesting Username\Password"
-	$PSCredUser = Read-Host "Username to connect to $($DomainController1 )"
-	$PSCredPass = Read-Host -AsSecureString "Password to connect to $($DomainController1)"
-	Write-Debug "Making Cerdentials to pass to New-PSSession"
-	$PSCred = new-object -typename System.Management.Automation.PSCredential -argumentlist $PSCredUser, $PSCredPass
-	Write-Debug "Calling NewPSSession"
-	$script:RemoteDC = New-PSSession -ComputerName $DomainController1 -Credential $PSCred
-	Write-Debug "NewPSSession established"
-	Write-Debug "Done Enter-DomainController"
+	$script:RemoteDC = New-PSSession -ComputerName $DomainController1 -Credential canagroup\admjustin
 	
 }
 
