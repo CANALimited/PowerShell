@@ -8,10 +8,10 @@
 	 Filename:     	Energy-CADD-operator.ps1
 	===========================================================================
 	.SYNOPSIS
-		Adds the user to the groups defined in this function Add-Energy-CADD-Operator
+		Adds the user to the groups defined in this function Add-EnergyCADDOperator
 	
 	.DESCRIPTION
-		Adds the user to the groups defined in this function Add-Energy-CADD-Operator
+		Adds the user to the groups defined in this function Add-EnergyCADDOperator
 #>
 
 <#
@@ -50,12 +50,12 @@
 
 	
 	.EXAMPLE
-				PS C:\> Add-Energy-CADD-Operator $Username
+				PS C:\> Add-EnergyCADDOperator $Username
 	
 .NOTES
 		Using an array and a foreach loop, the listed AD groups are added to the users group membership.  This file is expected to be imported in to the overall module to allow flexibility for adding new rolls, or modifying existing ones without having to modify the core script or module.
 #>
-function Add-Energy-CADD-Operator
+function Add-EnergyCADDOperator
 {
 	[CmdletBinding()]
 	param (

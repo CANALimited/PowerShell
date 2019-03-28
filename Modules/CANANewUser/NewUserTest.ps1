@@ -23,7 +23,7 @@
 
 
 #Explicitly import the module for testing
-Import-Module "\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\CANANewUser.psm1" -force
+Import-Module "\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\CANANewUser.psm1" -force -Verbose
 
 Write-Host "Hello World"
 
@@ -34,7 +34,7 @@ $UserName = "holmesjt"
 $DomainController1 = "vcana-dc01"
 $DomainController2 = "vcana-dc02"
 #Write-Debug "Call module"
-Get-Command -Module CANANewUser
+Get-Command -Module CANANewUser 
 #Write-Debug "Call MakeUsernam"
 #MakeUsername -FirstName $FirstName -SirName $SirName -Verbose
 #Write-Debug "End MakeUsername"
@@ -48,4 +48,4 @@ Get-Command -Module CANANewUser
 #Check-UserName
 #Write-Debug "End Check-UserName"
 
-Add-Energy-CADD-Designer --help
+Add-Energy-CADD-Designer
