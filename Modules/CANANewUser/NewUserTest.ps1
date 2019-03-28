@@ -48,4 +48,4 @@ Get-Command -Module CANANewUser
 #Check-UserName
 #Write-Debug "End Check-UserName"
 
-Add-Energy-CADD-Designer $UserName
+Add-Energy-CADD-Designer --help

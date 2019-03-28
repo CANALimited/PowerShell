@@ -12,13 +12,14 @@
 		A description of the file.
 #>
 
-Write-Debug "Importing scripts from folder \\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\Templates\*"
-#& '\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\Templates\CANA Energy\Energy-CADD-Designer.ps1' | gci -include '*.ps1' |
-Import-Module "\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\Templates\CANA Energy\Energy-CADD-Designer.ps1"
+Write-Debug "Importing *.PS1 from \\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\Templates\"
+$ImportTemplateModules = Get-ChildItem -Path "\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\Templates\*.ps1" -Recurse -Force
+foreach ($TemplateModule in $ImportTemplateModules)
+{
+	Write-Debug "Importing $TemplateModule"
+	Import-Module $TemplateModule
+}
 Write-Debug "Done Importing Scripts"
-
-
-
 
 #This function will take the $FirstName & #SirName and convert it to the username SirName+First Letter of First Name#
 function MakeUsername ()
