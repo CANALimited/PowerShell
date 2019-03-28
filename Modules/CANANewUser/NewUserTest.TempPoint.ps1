@@ -33,10 +33,17 @@ $SirName = "Holmes"
 $UserName = "Fun"
 $DomainController1 = "vcana-dc01"
 $DomainController2 = "vcana-dc02"
-
+Write-Debug "Call module"
 Get-Command -Module CANANewUser
+Write-Debug "Call MakeUsernam"
 MakeUsername -FirstName $FirstName -SirName $SirName -Verbose
-
+Write-Debug "End MakeUsername"
+Write-Debug "Call Check-ValidateUserName"
 Check-ValidateUserName
+Write-Debug "End Check-ValidateUserName"
+Write-Debug "Call Enter-DomainController"
 Enter-DomainController $DomainController1 $DomainController2
+Write-Debug "End Enter-DomainController"
+Write-Debug "Call Check-UserName"
 Check-UserName
+Write-Debug "End Check-UserName"

@@ -44,10 +44,10 @@
 		tfa.CHVEngineering.Read
 		tfa.CHVProjectJobs.JobNumber.Read  
 		tfa.CHVProjectJobs.Read
-		Xenappusers.deleted
+		XenApp75_Test_Users
 	
 	.EXAMPLE
-				PS C:\> Add-Energy-CADD-Designer
+				PS C:\> Add-Energy-CADD-Designer $Username
 	
 	.NOTES
 		Additional information about the function.
@@ -55,40 +55,52 @@
 function Add-Energy-CADD-Designer
 {
 	[CmdletBinding()]
-	param ()
+	param (
+		[parameter(Mandatory = $true)]
+		[string]$Username
+	)
+	Write-Debug "The username is $Username"
+	Write-Debug "Creating empty array"
+	$ADGroups = [System.Collections.ArrayList]@()
 	
-	$ADGroups += 'All CHV Users'
-	$ADGroups += 'All Head Office Users'
-	$ADGroups += 'All Users'
-	$ADGroups += 'CANA Lunch Special'
-	$ADGroups += 'CHV Engineering'
-	$ADGroups += 'Email Archiving Enabled'
-	$ADGroups += 'GSG.HTI.AllUsers'
-	$ADGroups += 'GSG.HTI.DrawingManagement.RO'
-	$ADGroups += 'GSG.HTI.DrawingManagement.RW'
-	$ADGroups += 'GSG.HTI.Shared.RW'
-	$ADGroups += 'Plotter Access CHV'
-	$ADGroups += 'Printer Access RM 207-West Kitchen Area – HP 880Z Secondary'
-	$ADGroups += 'Printer Access RM225-File Room - Aficio 6004 Default'
-	$ADGroups += 'SP.All.CHV.R'
-	$ADGroups += 'SP_CHV_Staff'
-	$ADGroups += 'stfa.CHVProjectJobs.JobNumber.Read'
-	$ADGroups += 'SW_Acrobat_Pro_Users'
-	$ADGroups += 'SW_FWC_Users'
-	$ADGroups += 'tfa.CHVArchive.Read'
-	$ADGroups += 'tfa.CHVCommon.RWED'
-	$ADGroups += 'tfa.CHVDrawingManagement.RWED'
-	$ADGroups += 'tfa.CHVDWGScans.RWED'
-	$ADGroups += 'tfa.CHVEngineering.Read'
-	$ADGroups += 'tfa.CHVProjectJobs.JobNumber.Read'
-	$ADGroups += 'tfa.CHVProjectJobs.Read'
-	$ADGroups += 'Xenappusers.deleted'
+	Write-Debug "Adding groups to the Array"
+	Write-Verbose "Adding groups to the Array"
 	
+	$ADGroups.add('All CHV Users')
+	$ADGroups.add('All Head Office Users')
+	$ADGroups.add('All Users')
+	$ADGroups.add('CHV Engineering')
+	$ADGroups.add('Email Archiving Enabled')
+	$ADGroups.add('GSG.HTI.AllUsers')
+	$ADGroups.add('GSG.HTI.DrawingManagement.RO')
+	$ADGroups.add('GSG.HTI.DrawingManagement.RW')
+	$ADGroups.add('GSG.HTI.Shared.RW')
+	$ADGroups.add('Plotter Access CHV')
+	$ADGroups.add('Printer Access RM 207-West Kitchen Area – HP 880Z Secondary')
+	$ADGroups.add('Printer Access RM225-File Room - Aficio 6004 Default')
+	$ADGroups.add('SP.All.CHV.R')
+	$ADGroups.add('SP_CHV_Staff')
+	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.Read')
+	$ADGroups.add('SW_Acrobat_Pro_Users')
+	$ADGroups.add('SW_FWC_Users')
+	$ADGroups.add('tfa.CHVArchive.Read')
+	$ADGroups.add('tfa.CHVCommon.RWED')
+	$ADGroups.add('tfa.CHVDrawingManagement.RWED')
+	$ADGroups.add('tfa.CHVDWGScans.RWED')
+	$ADGroups.add('tfa.CHVEngineering.Read')
+	$ADGroups.add('tfa.CHVProjectJobs.JobNumber.Read')
+	$ADGroups.add('tfa.CHVProjectJobs.Read')
+	$ADGroups.add('XenApp75_Test_Users')
 	
+	Write-Debug "Array contains $ADGroups"
+	Write-Verbose "Added list of groups to array"
+	
+	Write-Debug "Starting Foreach"
 	foreach ($ADGroup in $ADGroups)
 	{
 		Add-ADGroupMember -Identity $ADGroup -Members $Username
+		Write-Debug "Adding $Username to the group $ADGroup"
+		Write-Verbose "Adding $Username to the group $ADGroup"
 	}
 	
 }
-

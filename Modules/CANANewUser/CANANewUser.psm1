@@ -12,8 +12,10 @@
 		A description of the file.
 #>
 
-
-
+Write-Debug "Importing scripts from folder \\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\Templates\*"
+#& '\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\Templates\CANA Energy\Energy-CADD-Designer.ps1' | gci -include '*.ps1' |
+Import-Module "\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\Templates\CANA Energy\Energy-CADD-Designer.ps1"
+Write-Debug "Done Importing Scripts"
 
 
 

@@ -44,10 +44,10 @@
 		tfa.CHVEngineering.Read
 		tfa.CHVProjectJobs.JobNumber.Read  
 		tfa.CHVProjectJobs.Read
-		Xenappusers.deleted
+		XenApp75_Test_Users
 	
 	.EXAMPLE
-				PS C:\> Add-Energy-CADD-Designer
+				PS C:\> Add-Energy-CADD-Designer $Username
 	
 	.NOTES
 		Additional information about the function.
@@ -55,7 +55,13 @@
 function Add-Energy-CADD-Designer
 {
 	[CmdletBinding()]
-	param ()
+	param (
+		[parameter(Mandatory = $true)]
+		[string]$Username
+	)
+	
+	Write-Debug "Adding groups to the Array"
+	Write-Verbose "Adding groups to the Array"
 	
 	$ADGroups += 'All CHV Users'
 	$ADGroups += 'All Head Office Users'
@@ -82,13 +88,17 @@ function Add-Energy-CADD-Designer
 	$ADGroups += 'tfa.CHVEngineering.Read'
 	$ADGroups += 'tfa.CHVProjectJobs.JobNumber.Read'
 	$ADGroups += 'tfa.CHVProjectJobs.Read'
-	$ADGroups += 'Xenappusers.deleted'
+	$ADGroups += 'XenApp75_Test_Users'
 	
+	Write-Debug "Array contains $($_ADGroups)"
+	Write-Verbose "Added list of groups to array"
 	
+	Write-Debug "Starting Foreach"
 	foreach ($ADGroup in $ADGroups)
 	{
 		Add-ADGroupMember -Identity $ADGroup -Members $Username
+		Write-Debug "Adding $($_Username) to the group $($_ADGroup)"
+		Write-Verbose "Adding $($_Username) to the group $($_ADGroup)"
 	}
 	
 }
-
