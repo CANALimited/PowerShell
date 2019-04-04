@@ -3,9 +3,9 @@
 	===========================================================================
 	 Created with: 	SAPIEN Technologies, Inc., PowerShell Studio 2019 v5.6.157
 	 Created on:   	01/31/2019 7:42 AM
-	 Created by:   	Justin Holmes
-	 Organization: 	CANA IT
-	 Filename:     	FileServerSpace.ps1
+	 Created by:   	admJustin
+	 Organization: 	
+	 Filename:     	
 	===========================================================================
 	.DESCRIPTION
 		A description of the file.
@@ -77,17 +77,15 @@ $To = "justin.holmes@cana.ca"
 #$Cc = "AThirdUser@somewhere.com"
 #$Attachment = "C:\users\Username\Documents\SomeTextFile.txt"
 $Subject = "$serverName DiskSpace"
-$Body = Get-DisksSpace localhost | where{$_.PercentFree -lt 30} | Sort-Object -Property PercentFree |ft | Out-String
+$Body = Get-DisksSpace localhost | where{$_.PercentFree -lt 20} | ft | Out-String
 $SMTPServer = "mail.cana.ca"
 $SMTPPort = "25"
-Send-MailMessage -From $From -to $To -Subject $Subject -Body $Body -SmtpServer $SMTPServer -port $SMTPPort
-
-
+Send-MailMessage -From $From -to $To -Subject $Subject -Body $Body -SmtpServer $SMTPServer -port $SMTPPort 
 # SIG # Begin signature block
 # MIIbFwYJKoZIhvcNAQcCoIIbCDCCGwQCAQExDzANBglghkgBZQMEAgEFADB5Bgor
 # BgEEAYI3AgEEoGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG
-# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCCbEef6NuMhwoYX
-# 5T3aDPwO5iBFK4tq+sci2bmYjRHJaKCCFkgwggMLMIIB86ADAgECAhAdBzYmM16G
+# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCCpdQVLwJUMNk+n
+# NopdRVdmeGz0ZJ5B+ztZYqUTMb3axaCCFkgwggMLMIIB86ADAgECAhAdBzYmM16G
 # g06JYzHUiBhJMA0GCSqGSIb3DQEBBQUAMBgxFjAUBgNVBAMTDVZDQU5BQ0EtMDEt
 # Q0EwHhcNMTQwNjA1MjAzNTU3WhcNMzkwNjA1MjA0NTU3WjAYMRYwFAYDVQQDEw1W
 # Q0FOQUNBLTAxLUNBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAl8bY
@@ -210,23 +208,23 @@ Send-MailMessage -From $From -to $To -Subject $Subject -Body $Body -SmtpServer $
 # GRYKY2FuYS1ncm91cDEZMBcGCgmSJomT8ixkARkWCWNhbmFncm91cDEgMB4GA1UE
 # AxMXY2FuYWdyb3VwLVZDQU5BQ0EtMDItQ0ECE04AAAfOOXn02t/4yTYAAgAAB84w
 # DQYJYIZIAWUDBAIBBQCgTDAZBgkqhkiG9w0BCQMxDAYKKwYBBAGCNwIBBDAvBgkq
-# hkiG9w0BCQQxIgQgLuZ0bwpXtsQOXYMKBM4QzeG5Cv8MDcJm6EEs+S+sP3gwDQYJ
-# KoZIhvcNAQEBBQAEgYC0vCpPGLNB0nU55x9XQ4wm5uV2UC1NbUTacNxkMJia3V/N
-# gTycKhSWlvdBAB17xXMRz0spv/Op++gsWo8H/J4XY4NC0K4GlFowsBh5roRJ5lYc
-# 7ddin7jOOoDW2t3JociDSqExJJeOlNIfC+awt4LZBFx0eiMQaVoHktb1y7GMi6GC
+# hkiG9w0BCQQxIgQgOYXqwitve6+iP1GSGthzEG2xouvNpmly91c+8sLn6dYwDQYJ
+# KoZIhvcNAQEBBQAEgYCfan7dY9ApEt8yYrEPgHyV0wvIb+sdELzWb0KtutEH9xTs
+# +Uav9jL+xiCv32B6nYqnJ9FzfC0MB1BVR86LZHZHWsvdI1tmCBCUaEBtaPelsAcr
+# wsUaj/Wd/MkvBEnvjfP1CWSSf+5Tu881Fn1YkF+ooegES5YmbdeRDSqYpEGAzKGC
 # ArkwggK1BgkqhkiG9w0BCQYxggKmMIICogIBATBrMFsxCzAJBgNVBAYTAkJFMRkw
 # FwYDVQQKExBHbG9iYWxTaWduIG52LXNhMTEwLwYDVQQDEyhHbG9iYWxTaWduIFRp
 # bWVzdGFtcGluZyBDQSAtIFNIQTI1NiAtIEcyAgwkVLh/HhRTrTf6oXgwDQYJYIZI
 # AWUDBAIBBQCgggEMMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcN
-# AQkFMQ8XDTE5MDQwNDE1MDE1OFowLwYJKoZIhvcNAQkEMSIEIMlO6pKTVDNXPhHj
-# jeH8xyLhSjM8VDcXamDKa6lPHXz4MIGgBgsqhkiG9w0BCRACDDGBkDCBjTCBijCB
+# AQkFMQ8XDTE5MDQwNDE0NTUwNVowLwYJKoZIhvcNAQkEMSIEIDxHqjRd5ifK9Gt+
+# f4c8vol5WkTai8DWl2a7SqZea1MwMIGgBgsqhkiG9w0BCRACDDGBkDCBjTCBijCB
 # hwQUPsdm1dTUcuIbHyFDUhwxt5DZS2gwbzBfpF0wWzELMAkGA1UEBhMCQkUxGTAX
 # BgNVBAoTEEdsb2JhbFNpZ24gbnYtc2ExMTAvBgNVBAMTKEdsb2JhbFNpZ24gVGlt
 # ZXN0YW1waW5nIENBIC0gU0hBMjU2IC0gRzICDCRUuH8eFFOtN/qheDANBgkqhkiG
-# 9w0BAQEFAASCAQAYeEuAkrvtDMl/yziOPuz43/z32RB8zEEXICjJoQNx8bjyljUS
-# 3RlJh3C2w2NcmRcVDkztGcvRKzKC4JT1GWMO7i+/dM+KUMRvpPRM3lCgbfSrOXxj
-# W01fGVojCqTP1TGbGGBLfEtqvN/yoAgsLOX8zeKPY3b57rgBwdlyLWPpeUEXCt/n
-# lB5lASuSV3/DyGGZFx7kFi6MX0cwdzRRziTbrX549OXsmGZ84NHb31IK9IhMRQtC
-# ttG9kAcsnLiOx2pf35HXaKJz7t4i/wBXBz8Ivvkp49VukhvHj1yse1HAbKjLfBRH
-# iFJXwIz4KN+uA3DbefC11rPCvmj5B/eTmzes
+# 9w0BAQEFAASCAQBwj6MTgMST0kOGZ2WjX6NjyslJEKxxddD/r+cdopwD3/h46cde
+# ksvRP8Eyww+/NpNStlWLkno18XechrpZePH+yOmzMw9KznDeqxvQSMygILkGUSFV
+# ZHFvc4iqL8QFC904PvpuuKx6boD5JkUCHdWTHhhaJT27RK0os0IKl5n+H99l6GNg
+# /kix8gFkYFaJu45cAuMGOrEOCtM2V4COvvg2cVKApo2s6rACEiVVrX9B1sEbNymu
+# znsx4tPlWxeKK+hPA+9DOpPdsSCFcIwgn45z2bOmghvgEO5Q7PO+//OJt1uW4zl9
+# IDRhSeyNNCiJGqfranRG3Q17STn/RUgO6SgK
 # SIG # End signature block

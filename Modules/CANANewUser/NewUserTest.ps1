@@ -23,7 +23,7 @@
 
 
 #Explicitly import the module for testing
-Import-Module "\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\CANANewUser.psm1" -force -Verbose
+Import-Module "\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\CANANewUser.psm1" -force
 
 Write-Host "Hello World"
 
@@ -48,4 +48,4 @@ Get-Command -Module CANANewUser
 #Check-UserName
 #Write-Debug "End Check-UserName"
 
-Add-Energy-CADD-Designer
+Add-EnergyCADDDesigner $UserName

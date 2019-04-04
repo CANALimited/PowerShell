@@ -12,14 +12,17 @@
 		A description of the file.
 #>
 
-
-
-
-
-
+Write-Debug "Importing *.PS1 from \\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\Templates\"
+$ImportTemplateModules = Get-ChildItem -Path "\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\Templates\*.ps1" -Recurse -Force -exclude "*.TempPoint.ps1"
+foreach ($TemplateModule in $ImportTemplateModules)
+{
+	Write-Debug "Importing $TemplateModule"
+	Import-Module $TemplateModule
+}
+Write-Debug "Done Importing Scripts"
 
 #This function will take the $FirstName & #SirName and convert it to the username SirName+First Letter of First Name#
-function MakeUsername ()
+function New-MakeUsername ()
 {
 	<#
 .SYNOPSIS
@@ -68,7 +71,7 @@ function MakeUsername ()
 }
 
 #This function will check the username for whitespace or dashs.  White space will be removed, dashs just throw an information warning (as requested)#
-function Check-ValidateUserName
+function Search-ValidateUserName
 {
 <#
 .SYNOPSIS
@@ -90,6 +93,7 @@ function Check-ValidateUserName
 .COMPONENT
 #>
 	#$script:UserName = $script:UserName.ToLower()
+	
 	if ($script:UserName -match "\s")
 	{
 		Write-Debug "Matched whitespace"
@@ -117,7 +121,7 @@ function Check-ValidateUserName
 }
 
 #This function will check if the $script:UserName exists.  If it does it will add the 2nd letter from the $FirstName to the end of the $script:UserName#
-	function Check-UserName ()
+	function Submit-UserName ()
 {
 	<#
 .SYNOPSIS
@@ -189,7 +193,7 @@ function Check-ValidateUserName
 
 
 
-function Enter-DomainController
+function Connect-DomainController
 {
 <#
 .SYNOPSIS
@@ -266,7 +270,7 @@ function Enter-DomainController
 	
 }
 
-function Enter-Exchange
+function Connect-Exchange
 {
 <#
 .SYNOPSIS

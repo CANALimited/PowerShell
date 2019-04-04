@@ -14,6 +14,9 @@
 		Adds the user to the groups defined in this function Add-EnergyCivilForeman
 #>
 
+
+function Add-EnergyCivilForman
+{
 <#
 	.SYNOPSIS
 		Adds the user to the groups defined in this function
@@ -39,9 +42,7 @@
 	
 .NOTES
 		Using an array and a foreach loop, the listed AD groups are added to the users group membership.  This file is expected to be imported in to the overall module to allow flexibility for adding new rolls, or modifying existing ones without having to modify the core script or module.
-#>
-function Add-EnergyCivilForman
-{
+#>	
 	[CmdletBinding()]
 	param (
 		[parameter(Mandatory = $true)]
