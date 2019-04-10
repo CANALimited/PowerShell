@@ -52,20 +52,21 @@ function New-MakeUsername ()
 		[parameter(Mandatory=$true)]
 		[string]$SirName,
 		[parameter(Mandatory=$false)]
-		[string]$script:UserName
+		[string]$UserName
 
 		)
 		
 	Write-Debug "Given name is $($GivenName)"
 	Write-Debug "First name is $($FirstName)"
 	Write-Debug "Last name is $($SirName)"
-	Write-Debug "User name is $($script:UserName)"
+	Write-Debug "User name is $($UserName)"
 	
-	$script:UserName = $SirName + $FirstName.substring(0, 1)
-	$script:UserName = $script:UserName.ToLower()
+	$UserName = $SirName + $FirstName.substring(0, 1)
+	$UserName = $UserName.ToLower()
 	
-	Write-Debug "User name is now $($script:UserName)"
-	Write-Verbose "User name is now $($script:UserName)"
+	Write-Debug "Username is now $($UserName)"
+	Write-Verbose "Username is now $($UserName)"
+	return $UserName
 	#Write-Debug "Moving to function ValidateUserName"
 	
 }
@@ -92,26 +93,28 @@ function Search-ValidateUserName
 
 .COMPONENT
 #>
-	#$script:UserName = $script:UserName.ToLower()
+
 	
-	if ($script:UserName -match "\s")
+	if ($UserName -match "\s")
 	{
 		Write-Debug "Matched whitespace"
 		write-verbose "This User Name contains a white space"
-		Write-Verbose "Removing whitespace from username $($script:UserName)"
-		$script:UserName = $script:UserName -replace '(\s)', ''
+		Write-Debug "Removing whitespace from username $($UserName)"
+		Write-Verbose "Removing whitespace from username $($UserName)"
+		$UserName = $UserName -replace '(\s)', ''
 		Write-Debug "Removed whitespace"
-		Write-Verbose "Username is now $($script:UserName)"
+		Write-Debug "Username is now $($UserName)"
+		Write-Verbose "Username is now $($UserName)"
 	}
-	if ($script:UserName -match "-")
+	if ($UserName -match "-")
 	{
 		Write-Debug "Username has DASH in it"
-		Write-Information "The User Name $($script:UserName) contains a dash"
-		Write-Verbose "Username is $($script:UserName)"
+		Write-Information "The User Name $($UserName) contains a dash"
+		Write-Verbose "Username is $($UserName)"
 		Write-Debug "Cool, don't care about DASHES"
 	}
-	Write-Debug "Passed IFs on Username"
-	Write-Verbose "Username $($script:UserName) is OK!"
+	Write-Debug "Passed IFs on Username. No irregularities"
+	Write-Verbose "Username $($UserName) is OK!"
 	Write-Debug "Done Check-ValidateUserName"
 
 	
@@ -120,7 +123,7 @@ function Search-ValidateUserName
 	
 }
 
-#This function will check if the $script:UserName exists.  If it does it will add the 2nd letter from the $FirstName to the end of the $script:UserName#
+#This function will check if the $UserName exists.  If it does it will add the 2nd letter from the $FirstName to the end of the $UserName#
 	function Submit-UserName ()
 {
 	<#
@@ -144,18 +147,22 @@ function Search-ValidateUserName
 #>
 	[CmdletBinding()]
 	param (
-
+	[parameter(Mandatory = $true)]
+	[string]$UserName = $args[0],
+	[parameter(Mandatory = $true)]
+	$RemoteSession = $args[1]
 	)
 	
-	Write-Verbose $script:UserName
-	Write-Debug $script:UserName
+	Write-Verbose "Going to check $UserName on $RemoteDC for conflict"
+	Write-Debug "Going to check $UserName on $RemoteDC for conflict"
 	Write-Debug "Opening PSSession with $($RemoteDC)"
-	Invoke-Command -Session $script:RemoteDC -ScriptBlock {
-	$DCUsername = $script:UserName
+	#Enter-PSSession -Session $RemoteDC #-ScriptBlock {
+	Import-PSSession -Session $RemoteSession
+	#$DCUsername = $UserName
 			try
 		{
-			Write-Debug "Checking with Active Directory for $($DCUsername)"
-				$namecheck = get-aduser -filter { samaccountname -like $DCUsername }
+			Write-Debug "Checking with Active Directory for $($Username)"
+				$namecheck = get-aduser -filter { samaccountname -like $Username }
 			}
 			catch [Microsoft.ActiveDirectory.Management.ADIdentityNotFoundException]
 			{ }
@@ -165,7 +172,7 @@ function Search-ValidateUserName
 			{
 			
 			
-			Write-Verbose "UserName $($DCUsername) is in use $($namecheck.Enabled)"
+			Write-Verbose "UserName $($Username) is in use $($namecheck.Enabled)"
 			#$DCUserName = $DCSirName + $DCFirstName.substring(0, 2)
 			#Write-Verbose "trying username $DCUserName"
 			#Write-Debug "trying username $DCUserName"
@@ -176,16 +183,16 @@ function Search-ValidateUserName
 			
 			else
 			{
-			Write-Verbose "$DCUsername is avalable"
-			Write-Debug "$DCUsername is avalable"
+			Write-Verbose "$Username is avalable"
+			Write-Debug "$Username is avalable"
 			}
 		
 		
-	}
+	#}
 	Write-Debug "Closing PSSession with Exit-PSSession"
 	Exit-PSSession
 	Write-Debug "Closed PSSession"
-	Write-Debug "Done Check-UserName"
+	Write-Debug "Done Submit-UserName"
 }
 
 
@@ -229,7 +236,7 @@ function Connect-DomainController
 	Write-debug "Testing $($DomainController1) for connectivity"
 	$DC1 = test-connection -quiet -ComputerName $DomainController1
 	Write-debug "Domain Controller $($DomainController1) availability is $($DC1)"
-	Write-debug "Testing $($DomainController1) for connectivity"
+	Write-debug "Testing $($DomainController2) for connectivity"
 	$DC2 = test-connection -quiet -ComputerName $DomainController2
 	Write-debug "Domain Controller $($DomainController2) availability is $($DC2)"
 	If ($DC1 = $false)
@@ -264,9 +271,11 @@ function Connect-DomainController
 	Write-Debug "Making Cerdentials to pass to New-PSSession"
 	$PSCred = new-object -typename System.Management.Automation.PSCredential -argumentlist $PSCredUser, $PSCredPass
 	Write-Debug "Calling NewPSSession"
-	$script:RemoteDC = New-PSSession -ComputerName $DomainController1 -Credential $PSCred
+	$RemoteSession = New-PSSession -ComputerName $RemoteDC -Credential $PSCred
 	Write-Debug "NewPSSession established"
 	Write-Debug "Done Enter-DomainController"
+	
+	Return $RemoteSession
 	
 }
 
