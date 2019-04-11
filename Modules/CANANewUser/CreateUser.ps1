@@ -19,7 +19,7 @@
 		[string]$Title,
 		[Parameter(ValueFromPipelineByPropertyname)]
 		[ValidateNotNullOrEmpty()]
-		[string]$Location = 'OU=Corporate Users',
+		[string]$Location = 'OU=CANA Group Users,OU=Energy',
 		[Parameter()]
 		[ValidateNotNullOrEmpty()]
 		[string]$DefaultGroup = 'XYZCompany',
@@ -28,7 +28,7 @@
 		[string]$DefaultPassword = 'Welcome2cana',
 		[Parameter()]
 		[ValidateScript({ Test-Path -Path $_ })]
-		[string]$BaseHomeFolderPath = '\\MEMBERSRV1\Users'
+		[string]$BaseHomeFolderPath = '\\canagroup.cana-group\HomeDrive\Users'
 	)
 	
 	## Find the distinguished name of the domain the current computer is a part of.
@@ -73,7 +73,7 @@
 		'Enabled'		    = $true
 		'Initials'		    = $MiddleInitial
 		'Path'			    = "$Location,$DomainDn"
-		'ChangePasswordAtLogon' = $true
+		'ChangePasswordAtLogon' = $false
 	}
 	Write-Verbose -Message "Creating the new user account [$($Username)] in OU [$($ouDN)]"
 	New-AdUser @NewUserParams
