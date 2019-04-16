@@ -17,7 +17,7 @@ Write-Verbose "Importing Scripts"
 Write-Debug "Importing *.PS1 from \\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\Templates\"
 $ImportTemplateModules = Get-ChildItem -Path "\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\Templates\*.ps1" -Recurse -Force -exclude "*.TempPoint.ps1"
 Write-Debug "Importing *.PS1 from \\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser"
-$ImportTemplateModules += Get-ChildItem -Path "\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\CreateUser.ps1" -Force #-exclude "*.ps1"
+$ImportTemplateModules += Get-ChildItem -Path "\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\*.ps1" -Force -exclude "*.ps1"
 foreach ($TemplateModule in $ImportTemplateModules)
 {
 	Write-Debug "Importing $TemplateModule"
@@ -50,10 +50,12 @@ function New-MakeUsername ()
 #>
 	[CmdletBinding()]
 	param (
+		[parameter(Mandatory=$false)]
+		[string]$GivenName,
 		[parameter(Mandatory=$true)]
-		[string]$FirstName = $args[0],
+		[string]$FirstName,
 		[parameter(Mandatory=$true)]
-		[string]$SirName = $args[1],
+		[string]$SirName,
 		[parameter(Mandatory=$false)]
 		[string]$UserName
 
@@ -120,8 +122,10 @@ function Search-ValidateUserName
 	Write-Verbose "Username $($UserName) is OK!"
 	Write-Debug "Done Check-ValidateUserName"
 
-	return $UserName
-		
+	
+	
+	
+	
 }
 function Connect-DomainController
 {
@@ -228,60 +232,49 @@ function Connect-DomainController
 	[CmdletBinding()]
 	param (
 	[parameter(Mandatory = $true)]
-	[string]$UserName = $args[0]#,
-#	[parameter(Mandatory = $true)]
-#	$RemoteSession = $args[1]
+	[string]$UserName = $args[0],
+	[parameter(Mandatory = $true)]
+	$RemoteSession = $args[1]
 	)
-	
-	
-	Write-host "235 I have a username $UserName"
-	
 	
 	Write-Verbose "Going to check $UserName on $RemoteDC for conflict"
 	Write-Debug "Going to check $UserName on $RemoteDC for conflict"
 	Write-Debug "Opening PSSession with $($RemoteDC)"
-	#Enter-PSSession -Session $RemoteSession #-ScriptBlock {
-	#Import-PSSession -Session $RemoteSession
-	#Invoke-Command -Session $RemoteSession -ScriptBlock {
+	#Enter-PSSession -Session $RemoteDC #-ScriptBlock {
+	Import-PSSession -Session $RemoteSession
 	#$DCUsername = $UserName
-	
-	Write-host "248 I have a username $UserName"
-	
-		try
+			try
 		{
-			Write-Debug "Checking with Active Directory for $($UserName)"
-		$namecheck = get-aduser -filter { samaccountname -like '$UserName' }
-		Write-host "254 I have a username $UserName"
-	}
-	catch [Microsoft.ActiveDirectory.Management.ADIdentityNotFoundException]
-		{ }
+			Write-Debug "Checking with Active Directory for $($Username)"
+				$namecheck = get-aduser -filter { samaccountname -like $Username }
+			}
+			catch [Microsoft.ActiveDirectory.Management.ADIdentityNotFoundException]
+			{ }
 		
-		Write-Debug "AD replied, checking if True or False"
-		if ($namecheck.Enabled -eq $true)
-		{
-		Write-host "262 I have a username $UserName"
+			Write-Debug "AD replied, checking if True or False"
+			if ($namecheck.Enabled -eq $true)
+			{
 			
-			Write-Verbose "UserName $($UserName) is in use $($namecheck.Enabled)"
+			
+			Write-Verbose "UserName $($Username) is in use $($namecheck.Enabled)"
 			#$DCUserName = $DCSirName + $DCFirstName.substring(0, 2)
 			#Write-Verbose "trying username $DCUserName"
 			#Write-Debug "trying username $DCUserName"
 			Write-Verbose "Exiting from Check-UserName"
-			Exit
-			
-		}
-		else
-			{
-			Write-host "275 I have a username $UserName"
-			Write-Verbose "$UserName is avalable"
-			Write-Debug "$UserName is avalable"
-			return $true
-			Write-host "279 I have a username $UserName"
+				Exit
+				
 			}
 			
+			else
+			{
+			Write-Verbose "$Username is avalable"
+			Write-Debug "$Username is avalable"
+			}
 		
-	#} -ArgumentList $UserName
+		
+	#}
 	Write-Debug "Closing PSSession with Exit-PSSession"
-	#remove-PSSession
+	Exit-PSSession
 	Write-Debug "Closed PSSession"
 	Write-Debug "Done Submit-UserName"
 }
@@ -336,57 +329,4 @@ function Connect-Exchange
 	
 }
 
-function New-HomeFolder
-{
-	[CmdletBinding(PositionalBinding = $true)]
-	param
-	(
-		[Parameter(Mandatory = $true,
-				   Position = 0)]
-		[string]$UserName,
-		[Parameter()]
-		[ValidateScript({ Test-Path -Path $_ })]
-		[string]$BaseHomeFolderPath = '\\canagroup.cana-group\HomeDrive\Users'
-	)
-	
 
-	
-	#region Ensure the home folder to create doesn't already exist
-	$homeFolderPath = "$BaseHomeFolderPath\$UserName"
-	if (Test-Path -Path $homeFolderPath)
-	{
-		throw "The home folder path [$homeFolderPath] already exists."
-	}
-	
-	
-	Write-debug "Disable inheritance and Remove Permission on $homeFolderPath"
-	& ICACLS $homeFolderPath /inheritance:r
-	# setup basic permissions for all folders.
-	
-	& ICACLS $homeFolderPath /T /Grant "administrator:(CI)(OI)(F)"
-	
-	MKDir $homeFolderPath\"My Documents"
-	MKDir $homeFolderPath\"My Documents\Scans"
-	
-	& ICACLS $homeFolderPath /T /Grant "Ricoh:(CI)(OI)(RX)"
-	& ICACLS $homeFolderPath /T /Grant "svcHTIscan:(CI)(OI)(RX)"
-	& ICACLS $homeFolderPath /T /Grant "Domain Admins:(CI)(OI)(F)"
-	& ICACLS $homeFolderPath\"My Documents\Scans" /T /Grant "Ricoh:(CI)(OI)(RX,W,D)"
-}
-
-function New-HomeFolder2
-{
-	[CmdletBinding(PositionalBinding = $true)]
-	param
-	(
-		[Parameter(Mandatory = $true,
-				   Position = 0)]
-		[string]$UserName,
-		[Parameter()]
-		[ValidateScript({ Test-Path -Path $_ })]
-		[string]$BaseHomeFolderPath = '\\canagroup.cana-group\HomeDrive\Users'
-	)
-	
-	ICACLS $homeFolderPath /T /Grant $UserName":(CI)(OI)(F)"
-	
-}

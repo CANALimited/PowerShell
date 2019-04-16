@@ -20,55 +20,32 @@
 	in the project, click Home\Run or Home\Run in Console, or in the Project pane, 
 	right-click the project name, and then click Run Project.
 #>
-#Requires -RunAsAdministrator
-$versionMinimum = [Version]'5.1'
 
-if ($versionMinimum -gt $PSVersionTable.PSVersion)
-{ throw "This script requires PowerShell $versionMinimum" }
-#Requires -Version 5.1
-"Requires version $versionMinimum"
-"Running PowerShell $($PSVersionTable.PSVersion)."
 
 #Explicitly import the module for testing
-
 Import-Module "\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\CANANewUser.psm1" -force
 
+Write-Host "Hello World"
 
 $GivenName = "Dan"
 $FirstName = "Justin"
-$MiddleInitial = "R"
 $SirName = "Van Holmes"
-#$UserName = "vanholmesj"
-$Department = "120-Information Technology"
-$Title = "IT Technical Analyst"
-$Manager = "georgek"
-$CompanyGroup = "95-CANA Limited"
 $DomainController1 = "vcana-dc01"
 $DomainController2 = "vcana-dc02"
-#Write-Debug "Call module"
-#Get-Command -Module CANANewUser 
+Write-Debug "Call module"
+Get-Command -Module CANANewUser 
 Write-Debug "Call New-MakeUsername"
-$UserName = New-MakeUsername $FirstName $SirName
+$UserName = New-MakeUsername -FirstName $FirstName -SirName $SirName -Verbose
 Write-Debug "End MakeUsername"
-Write-host "53 I have a username $UserName"
+Write-Debug "I have a username $UserName"
 Write-Debug "Call Check-ValidateUserName"
-$UserName = Search-ValidateUserName $UserName
-Write-host "56 I have a username $UserName"
+Search-ValidateUserName $UserName
 Write-Debug "End Check-ValidateUserName"
-
-#Write-Debug "Call Enter-DomainController"
-#$RemoteSession = Connect-DomainController $DomainController1 $DomainController2
-#Write-Debug "End Enter-DomainController"
-Write-host "66 I have a username $UserName"
+Write-Debug "Call Enter-DomainController"
+$RemoteSession = Connect-DomainController $DomainController1 $DomainController2
+Write-Debug "End Enter-DomainController"
 Write-Debug "Call Submit-UserName"
-#Submit-UserName $UserName $RemoteSession
-$SubmitUserName = $Username
-Submit-UserName $SubmitUserName
-Write-host "70 I have a username $UserName"
+Submit-UserName $UserName $RemoteSession
 Write-Debug "End Check-UserName"
-Write-host "72 I have a username $UserName"
-New-HomeFolder $UserName
-New-ADUserCreation $FirstName $SirName $MiddleInitial $UserName $CompanyGroup $Department $Manager $Title
-New-HomeFolder2 $UserName
-Add-CommissioningSupervisor $UserName
 
+#Add-EnergyCADDDesigner $UserName

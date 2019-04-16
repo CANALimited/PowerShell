@@ -107,6 +107,7 @@ function Add-CommissioningSupervisor
 	$ADGroups.add('CANA High Voltage Commisioning Owners') | Out-Null
 	$ADGroups.add('CANA High Voltage iOS Users') | Out-Null
 	$ADGroups.add('CANA High Voltage Tenders') | Out-Null
+	$ADGroups.add('CANA Lunch Special') | Out-Null
 	$ADGroups.add('CANA Utilities Incident Reports') | Out-Null
 	$ADGroups.add('CHV Engineering') | Out-Null
 	$ADGroups.add('CHV Incident Notification Reports') | Out-Null
