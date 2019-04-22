@@ -33,6 +33,8 @@ if ($versionMinimum -gt $PSVersionTable.PSVersion)
 
 Import-Module "\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\CANANewUser.psm1" -force
 
+$AdminCredentials = Get-Credential -Message "Credential are required for access the Domain Controller, File server and Exchange server"
+
 
 $GivenName = "Dan"
 $FirstName = "Justin"
@@ -45,30 +47,31 @@ $Manager = "georgek"
 $CompanyGroup = "95-CANA Limited"
 $DomainController1 = "vcana-dc01"
 $DomainController2 = "vcana-dc02"
+$Exchange1 = "vCANAEXCH-01"
+$Exchange2 = "vCANAEXCH-02"
 #Write-Debug "Call module"
 #Get-Command -Module CANANewUser 
 Write-Debug "Call New-MakeUsername"
 $UserName = New-MakeUsername $FirstName $SirName
 Write-Debug "End MakeUsername"
-Write-host "53 I have a username $UserName"
 Write-Debug "Call Check-ValidateUserName"
 $UserName = Search-ValidateUserName $UserName
-Write-host "56 I have a username $UserName"
 Write-Debug "End Check-ValidateUserName"
 
 #Write-Debug "Call Enter-DomainController"
 #$RemoteSession = Connect-DomainController $DomainController1 $DomainController2
 #Write-Debug "End Enter-DomainController"
-Write-host "66 I have a username $UserName"
 Write-Debug "Call Submit-UserName"
 #Submit-UserName $UserName $RemoteSession
 $SubmitUserName = $Username
 Submit-UserName $SubmitUserName
-Write-host "70 I have a username $UserName"
 Write-Debug "End Check-UserName"
-Write-host "72 I have a username $UserName"
 New-HomeFolder $UserName
 New-ADUserCreation $FirstName $SirName $MiddleInitial $UserName $CompanyGroup $Department $Manager $Title
 New-HomeFolder2 $UserName
 Add-CommissioningSupervisor $UserName
+
+$RemoteEXCH = Connect-Exchange $AdminCredentials $Exchange1 $Exchange2
+
+New-UserMailbox $UserName $RemoteEXCH
 

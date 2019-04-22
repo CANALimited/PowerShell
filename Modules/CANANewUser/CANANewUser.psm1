@@ -234,7 +234,7 @@ function Connect-DomainController
 	)
 	
 	
-	Write-host "235 I have a username $UserName"
+	
 	
 	
 	Write-Verbose "Going to check $UserName on $RemoteDC for conflict"
@@ -245,13 +245,12 @@ function Connect-DomainController
 	#Invoke-Command -Session $RemoteSession -ScriptBlock {
 	#$DCUsername = $UserName
 	
-	Write-host "248 I have a username $UserName"
 	
 		try
 		{
 			Write-Debug "Checking with Active Directory for $($UserName)"
 		$namecheck = get-aduser -filter { samaccountname -like '$UserName' }
-		Write-host "254 I have a username $UserName"
+
 	}
 	catch [Microsoft.ActiveDirectory.Management.ADIdentityNotFoundException]
 		{ }
@@ -259,8 +258,7 @@ function Connect-DomainController
 		Write-Debug "AD replied, checking if True or False"
 		if ($namecheck.Enabled -eq $true)
 		{
-		Write-host "262 I have a username $UserName"
-			
+					
 			Write-Verbose "UserName $($UserName) is in use $($namecheck.Enabled)"
 			#$DCUserName = $DCSirName + $DCFirstName.substring(0, 2)
 			#Write-Verbose "trying username $DCUserName"
@@ -271,11 +269,11 @@ function Connect-DomainController
 		}
 		else
 			{
-			Write-host "275 I have a username $UserName"
+		
 			Write-Verbose "$UserName is avalable"
 			Write-Debug "$UserName is avalable"
 			return $true
-			Write-host "279 I have a username $UserName"
+		
 			}
 			
 		
@@ -317,9 +315,11 @@ function Connect-Exchange
 	[CmdletBinding()]
 	param (
 		[parameter(Mandatory = $true)]
-		[string]$Exchange1 = $args[0],
+		[string]$AdminCredentials = $args[0],
+		[parameter(Mandatory = $true)]
+		[string]$Exchange1 = $args[1],
 		[parameter(Mandatory = $false)]
-		[string]$Exchange2 = $args[1]
+		[string]$Exchange2 = $args[2]
 	)
 	
 	
@@ -328,13 +328,37 @@ function Connect-Exchange
 	
 	Write-debug "Testing $($Exchange1) for connectivity"
 	$EX1 = test-connection -quiet -ComputerName $Exchange1
-	Write-debug "Domain Controller $($Exchange1) availability is $($EX1)"
+	Write-debug "Exchange Server $($Exchange1) availability is $($EX1)"
 	Write-debug "Testing $($Exchange2) for connectivity"
 	$EX2 = test-connection -quiet -ComputerName $Exchange2
-	Write-debug "Domain Controller $($Exchange2) availability is $($EX2)"
-	$script:RemoteEX = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri http://vCANAEXCH-01/PowerShell/ -Authentication Kerberos -Credential canagroup\admjustin
+	Write-debug "Exchange Server $($Exchange2) availability is $($EX2)"
+	$RemoteEXCH = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri http://vCANAEXCH-01/PowerShell/ -Authentication Kerberos -Credential $AdminCredentials
 	
+	
+	Return $RemoteEXCH
 }
+
+function New-UserMailbox
+{
+	[CmdletBinding()]
+	param (
+		[parameter(Mandatory = $true)]
+		[string]$UserName = $args[0],
+		[parameter(Mandatory = $false)]
+		$RemoteEXCH = $args[1]
+	)
+	
+	if (! (Get-PSSnapin -Registered Microsoft.Exchange.Management.PowerShell.E2010 -ErrorAction:SilentlyContinue))
+	{
+		Write-Warning "This script must be run in the Exchange Management Shell"
+		exit
+	}
+	
+	Import-PSSession $RemoteEXCH
+	
+	Enable-Mailbox -Identity $Username -Database "CANA Mail 03"
+}
+
 
 function New-HomeFolder
 {
@@ -360,18 +384,18 @@ function New-HomeFolder
 	
 	
 	Write-debug "Disable inheritance and Remove Permission on $homeFolderPath"
-	& ICACLS $homeFolderPath /inheritance:r
+	ICACLS $homeFolderPath /inheritance:r
 	# setup basic permissions for all folders.
 	
-	& ICACLS $homeFolderPath /T /Grant "administrator:(CI)(OI)(F)"
+	ICACLS $homeFolderPath /T /Grant "administrator:(CI)(OI)(F)"
 	
 	MKDir $homeFolderPath\"My Documents"
 	MKDir $homeFolderPath\"My Documents\Scans"
 	
-	& ICACLS $homeFolderPath /T /Grant "Ricoh:(CI)(OI)(RX)"
-	& ICACLS $homeFolderPath /T /Grant "svcHTIscan:(CI)(OI)(RX)"
-	& ICACLS $homeFolderPath /T /Grant "Domain Admins:(CI)(OI)(F)"
-	& ICACLS $homeFolderPath\"My Documents\Scans" /T /Grant "Ricoh:(CI)(OI)(RX,W,D)"
+	ICACLS $homeFolderPath /T /Grant "Ricoh:(CI)(OI)(RX)"
+	ICACLS $homeFolderPath /T /Grant "svcHTIscan:(CI)(OI)(RX)"
+	ICACLS $homeFolderPath /T /Grant "Domain Admins:(CI)(OI)(F)"
+	ICACLS $homeFolderPath\"My Documents\Scans" /T /Grant "Ricoh:(CI)(OI)(RX,W,D)"
 }
 
 function New-HomeFolder2
