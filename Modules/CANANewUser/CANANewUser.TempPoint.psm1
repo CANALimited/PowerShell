@@ -147,9 +147,11 @@ function Connect-DomainController
 	[CmdletBinding()]
 	param (
 		[parameter(Mandatory = $true)]
-		[string]$DomainController1 = $args[0],
+		[string]$AdminCredentials = $args[0],
+		[parameter(Mandatory = $true)]
+		[string]$DomainController1 = $args[1],
 		[parameter(Mandatory = $false)]
-		[string]$DomainController2 = $args[0]
+		[string]$DomainController2 = $args[2]
 	)
 	
 	
@@ -193,8 +195,12 @@ function Connect-DomainController
 	#$PSCredPass = Read-Host -AsSecureString "Password to connect to $($DomainController1)"
 	#Write-Debug "Making Cerdentials to pass to New-PSSession"
 	#$PSCred = new-object -typename System.Management.Automation.PSCredential -argumentlist $PSCredUser, $PSCredPass
+	Write-Debug "Calling NewPSSession"
+	$RemoteSession = New-PSSession -ComputerName $RemoteDC -Credential $AdminCredentials
+	Write-Debug "NewPSSession established"
+	Write-Debug "Done Enter-DomainController"
 	
-	Return $RemoteDC
+	Return $RemoteSession
 	
 }
 

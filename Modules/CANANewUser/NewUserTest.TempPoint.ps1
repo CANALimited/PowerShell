@@ -60,12 +60,8 @@ $UserName = Search-ValidateUserName $UserName
 Write-Debug "End Check-ValidateUserName"
 
 Write-Debug "Call Enter-DomainController"
-$RemoteDC = Connect-DomainController $DomainController1 $DomainController2
+$RemoteSession = Connect-DomainController $AdminCredentials $DomainController1 $DomainController2
 Write-Debug "End Enter-DomainController"
-
-Write-Debug "Calling NewPSSession"
-$RemoteSession = New-PSSession -ComputerName $RemoteDC -Credential $AdminCredentials
-
 Write-Debug "Call Submit-UserName"
 Submit-UserName $UserName $RemoteSession
 $SubmitUserName = $Username
