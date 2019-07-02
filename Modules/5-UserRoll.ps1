@@ -11,18 +11,18 @@
 		A description of the file.
 #>
 
-Write-Verbose "Importing Scripts"
-Write-Debug "Importing *.PS1 from \\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\Templates\"
-$ImportTemplateModules = Get-ChildItem -Path "\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\Templates\*.ps1" -Recurse -Force -exclude "*.TempPoint.ps1"
-Write-Debug "Importing *.PS1 from \\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser"
-$ImportTemplateModules += Get-ChildItem -Path "\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\CreateUser.ps1" -Force #-exclude "*.ps1"
-foreach ($TemplateModule in $ImportTemplateModules)
-{
-	Write-Debug "Importing $TemplateModule"
-	Import-Module $TemplateModule
-}
-Write-Verbose "Done Importing Scripts"
-Write-Debug "Done Importing Scripts"
+	Write-Verbose "Importing Scripts"
+	Write-Debug "Importing *.PS1 from \\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\Templates\"
+	$ImportTemplateModules = Get-ChildItem -Path "\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\Templates\*.ps1" -Recurse -Force -exclude "*.TempPoint.ps1"
+	Write-Debug "Importing *.PS1 from \\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser"
+	$ImportTemplateModules += Get-ChildItem -Path "\\canagroup.cana-group\business\IT Storage\Scripts\CANA-Justin\PowerShell\Modules\CANANewUser\CreateUser.ps1" -Force #-exclude "*.ps1"
+	foreach ($TemplateModule in $ImportTemplateModules)
+	{
+		Write-Debug "Importing $TemplateModule"
+		Import-Module $TemplateModule
+	}
+	Write-Verbose "Done Importing Scripts"
+	Write-Debug "Done Importing Scripts"
 
 $AdminCredentials = Get-Credential -Message "Credential are required for access the Domain Controller, File server and Exchange server"
 $UserName = Read-Host "Enter the Username of the User"
@@ -31,8 +31,9 @@ $DomainController1 = Read-Host "Enter the Name of the Domain Controller"
 
 
 $session = New-PSSession -ComputerName $DomainController1 -Credential $AdminCredentials
-Invoke-Command $session -Scriptblock { Import-Module ActiveDirectory }
-Invoke-Command $session '-Scriptblock ${function:$UserRoll}' -ArgumentList $UserName
+Invoke-Command -Session $session -Scriptblock { Import-Module ActiveDirectory }
+#Invoke-Command -Session $session -Scriptblock {}
+Invoke-Command -Session $session -Scriptblock ${function:UserRoll} -ArgumentList $UserName
 
 
 
@@ -41,8 +42,8 @@ Remove-PSSession $Session
 # SIG # Begin signature block
 # MIIcFQYJKoZIhvcNAQcCoIIcBjCCHAICAQExDzANBglghkgBZQMEAgEFADB5Bgor
 # BgEEAYI3AgEEoGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG
-# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCCv/WEUXbl4H/2M
-# EJTngusmz/JCy/YezN/Am0nYEA3IKaCCFsUwggMLMIIB86ADAgECAhAdBzYmM16G
+# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCBN5+nBEMgZ6bSR
+# Wwc5L6imD+XCQDKUzB2R1EReZPfHkKCCFsUwggMLMIIB86ADAgECAhAdBzYmM16G
 # g06JYzHUiBhJMA0GCSqGSIb3DQEBBQUAMBgxFjAUBgNVBAMTDVZDQU5BQ0EtMDEt
 # Q0EwHhcNMTQwNjA1MjAzNTU3WhcNMzkwNjA1MjA0NTU3WjAYMRYwFAYDVQQDEw1W
 # Q0FOQUNBLTAxLUNBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAl8bY
@@ -167,26 +168,26 @@ Remove-PSSession $Session
 # ggSmMIIEogIBATBwMFkxGjAYBgoJkiaJk/IsZAEZFgpjYW5hLWdyb3VwMRkwFwYK
 # CZImiZPyLGQBGRYJY2FuYWdyb3VwMSAwHgYDVQQDExdjYW5hZ3JvdXAtVkNBTkFD
 # QS0wMi1DQQITTgAACJDElT8gBZkJmQACAAAIkDANBglghkgBZQMEAgEFAKBMMBkG
-# CSqGSIb3DQEJAzEMBgorBgEEAYI3AgEEMC8GCSqGSIb3DQEJBDEiBCASg2Ds9TSc
-# JNPH0pabwefPEmCzP8Q4pj5U9TnhfMw8YjANBgkqhkiG9w0BAQEFAASCAQDDjMmj
-# UBlqmK95zA58XBEAV1RB4gDPzJ1bH1Jk6LadaTNFnKJtnl0lVDSAbu7XGopSeCx8
-# fvFtXVftXD/mehGk08+O9bFpWwl7+NcT/NPrvVBOfou1rWR+G8Jjq3TkHBYM+xxI
-# i2+KSzj8pVtLXXnOO7b6cO0QkcIpcdr1vPaq47i/idUzI71u/g4RYidMvbyrLGf0
-# 5qDMXARXeZbNrThMYizZuPNiSX4+PGUbVd+I06X/eD8JV9t3hGUXhsv7cYXTSSTB
-# D6gnXGF0EedQAOvVEOFMC0cv4J1sIOaqxPyneXaTCnp8/q5jIwWYMQ1Lr5lC1FpO
-# /IW0gRG2gzwdPNAFoYICuTCCArUGCSqGSIb3DQEJBjGCAqYwggKiAgEBMGswWzEL
+# CSqGSIb3DQEJAzEMBgorBgEEAYI3AgEEMC8GCSqGSIb3DQEJBDEiBCBpMpuLEZ4a
+# 5DxB7LHsRd8BxHKCXWNEfIXtqhWLQW5RxTANBgkqhkiG9w0BAQEFAASCAQCvf0Oa
+# VAkH/ZD6hqWH6WMIm09osgxWnqQfkkrvT7Z7kNbv8WS57aJD/qZq8+B/SnbRvgy4
+# +hfl5wsUQwpL4A0CwI5bYEFfbRUsKrzHJYHlY1W2noZECqHXMw46ZxM/R19jPqxM
+# UOi5u1+wLYcccug/FVPwtFPxeoxD0QjqJbOPWXEnRMs6yQY4Wh0uXHGPh5rp8X7q
+# RrJ8a/Nr/ErepdoL+FcrolpXC2ltjqR8iqW2UB9QS0404V/ESVaharMkXAGY/BYG
+# /rWy7vYx2OaWnvJ3Ng67oz6NGB06Lct2qp3XrLb6w3ZEJKHQo0vAKIju9hZHUJ2F
+# ooN13gloEnQrqsBhoYICuTCCArUGCSqGSIb3DQEJBjGCAqYwggKiAgEBMGswWzEL
 # MAkGA1UEBhMCQkUxGTAXBgNVBAoTEEdsb2JhbFNpZ24gbnYtc2ExMTAvBgNVBAMT
 # KEdsb2JhbFNpZ24gVGltZXN0YW1waW5nIENBIC0gU0hBMjU2IC0gRzICDCRUuH8e
 # FFOtN/qheDANBglghkgBZQMEAgEFAKCCAQwwGAYJKoZIhvcNAQkDMQsGCSqGSIb3
-# DQEHATAcBgkqhkiG9w0BCQUxDxcNMTkwNjExMTc1NjQ4WjAvBgkqhkiG9w0BCQQx
-# IgQgqdOD4fWkmWM4DOPbmXrIXVstI3BwZ8LaLwq14POy5iswgaAGCyqGSIb3DQEJ
+# DQEHATAcBgkqhkiG9w0BCQUxDxcNMTkwNjEyMTMzMTU1WjAvBgkqhkiG9w0BCQQx
+# IgQgBlG1X8Nj0X36AWVo0xDBjyIxmpsNaKWxvEKrzmlknXEwgaAGCyqGSIb3DQEJ
 # EAIMMYGQMIGNMIGKMIGHBBQ+x2bV1NRy4hsfIUNSHDG3kNlLaDBvMF+kXTBbMQsw
 # CQYDVQQGEwJCRTEZMBcGA1UEChMQR2xvYmFsU2lnbiBudi1zYTExMC8GA1UEAxMo
 # R2xvYmFsU2lnbiBUaW1lc3RhbXBpbmcgQ0EgLSBTSEEyNTYgLSBHMgIMJFS4fx4U
-# U603+qF4MA0GCSqGSIb3DQEBAQUABIIBAHBpfGA5+eQaTJsJS5i3G6wQkdkvx1+N
-# BRAw6hGpqowfsjZYjoxyTHEx9KRvjVu+3PB4vChTrzEvDDY3Y/f3bGFIPVoqiaR5
-# a6OrLGCPaHkCRby+aoV31VweEG8q6PycleP/LQqsE5BFvAUX/HDqkLA31X687axO
-# kgUqfDkZbPmLLhBoddn+E02SCCqVwLaF0B5wIfEykW0tliWrKKGxEsDr+MNQ9pcS
-# Sgg0vB8WBEvmSUiarx1tRqc3im3m//4yncdm9lZxjmYTJFAWYJVohB6Af0Wg0AxT
-# mOx+dLvnS3aUTbyGxB4vzKElXKyuWjG+qvx07U/JSf3tA9ClkB2mkTU=
+# U603+qF4MA0GCSqGSIb3DQEBAQUABIIBANYmP9b5/M/X5yRJJQVNyDhIFo+QwZAF
+# 4K3JCAkAAZaKSwPXsWPj/LhydW79Y7BYa7fQJnuSW7ayfPSaJfGNQ+Clrk3ZIksl
+# +84HViqB9KAuuDMybwYfbA5Nk+AwVlQ+wCD8oeeEwZ+INBBaj1f5lZw+Uwjg/IkK
+# lvpF2gsxFC/QoUP/S1KDYQDQHNDDwlzHr2h71AKofzUJQniigUb6vYoR+A7N/ORz
+# 2WImjOjSFRJTiOBjWPyBcYR/8AccYXJtVBjlgFOkPtim89BAcMsRCrS63NId6Yho
+# UNvcJiEHo9pYrIpfWIjAhFbDmbbdCJXHjk4SjiUkDTLu3wryND0hOWI=
 # SIG # End signature block

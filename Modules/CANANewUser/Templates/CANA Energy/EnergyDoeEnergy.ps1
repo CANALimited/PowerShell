@@ -83,7 +83,7 @@ function Add-DoeEnergy
 {
 	[CmdletBinding()]
 	param (
-		[parameter(Mandatory = $true)]
+		[parameter(Mandatory,ValueFromPipeline)]
 		[string]$Username
 	)
 	Write-Debug "The username is $Username"
