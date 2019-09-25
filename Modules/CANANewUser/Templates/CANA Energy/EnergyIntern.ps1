@@ -29,7 +29,7 @@ function Add-EnergyIntern
 		All Head Office Users
 		All Users
 		CANA FWC Users
-		CANA Lunch Special
+		
 		CANA Utilities Permits
 		CANA Utilities PMs and Interns
 		CANA Utilities Tenders
@@ -74,24 +74,13 @@ function Add-EnergyIntern
 	Write-Verbose "Adding groups to the Array"
 	
 	$ADGroups.add('All Users') | Out-Null
-	$ADGroups.add('311ProjectManager') | Out-Null
-	$ADGroups.add('Ace_Sec') | Out-Null
 	$ADGroups.add('All Head Office Users') | Out-Null
 	$ADGroups.add('All Users') | Out-Null
 	$ADGroups.add('CANA FWC Users') | Out-Null
-	$ADGroups.add('CANA Lunch Special') | Out-Null
-	$ADGroups.add('CANA Utilities Permits') | Out-Null
-	$ADGroups.add('CANA Utilities PMs and Interns') | Out-Null
-	$ADGroups.add('CANA Utilities Tenders') | Out-Null
-	$ADGroups.add('CANA Utilities Users') | Out-Null
+	
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
 	$ADGroups.add('Mbx.Locates') | Out-Null
-	$ADGroups.add('Plotter Access CUT') | Out-Null
-	$ADGroups.add('Printer Access RM 207-West Kitchen Area – HP 880Z Default') | Out-Null
-	$ADGroups.add('Printer Access RMW202A-Mezzanine - Aficio 4504 Default') | Out-Null
-	$ADGroups.add('SP_CUT_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Staff') | Out-Null
-	$ADGroups.add('stfa.Utilities.Project.RWED') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null
 	$ADGroups.add('SW_Viewpoint_Users') | Out-Null
 	$ADGroups.add('tfa.Utilities.CUTemplates.RWED') | Out-Null
@@ -104,8 +93,23 @@ function Add-EnergyIntern
 	$ADGroups.add('Vista Viewpoint Users') | Out-Null
 	$ADGroups.add('XenApp75_Users') | Out-Null
 	$ADGroups.add('XenApp75_Viewpoint_Prod') | Out-Null
+	$ADGroups.add('CANA Energy PMs') | Out-Null
+	$ADGroups.add('CANA Energy - Project Services') | Out-Null
+
+	$ADGroups.add('tfa.CHVArchive.Read') | Out-Null
+	$ADGroups.add('tfa.CHVCommon.RWED') | Out-Null
+	$ADGroups.add('tfa.CHVDrawingManagement.Read') | Out-Null
+	$ADGroups.add('tfa.CHVDWGScans.Read') | Out-Null
+	$ADGroups.add('tfa.CHVEngineering.RWED') | Out-Null
+	$ADGroups.add('tfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
+	$ADGroups.add('tfa.CHVProjectJobs.Read') | Out-Null
+	$ADGroups.add('tfa.CHVProjectJobs.RWED') | Out-Null
 	
-	
+	$ADGroups.add('rfa.Energy') | Out-Null
+	$ADGroups.add('stfa.Energy.Archive.READ') | Out-Null
+	$ADGroups.add('stfa.Energy.Engineering.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Administrative.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.READ') | Out-Null
 	
 	Write-Debug "Array contains $ADGroups"
 	Write-Verbose "Added list of groups to array"

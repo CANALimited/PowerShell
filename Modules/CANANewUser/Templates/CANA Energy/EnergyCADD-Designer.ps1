@@ -21,17 +21,18 @@
 	.DESCRIPTION
 		Adds the user to the groups defined in this function
 
-		All CHV Users
+		CANA Energy Users
 		All Head Office Users
 		All Users
-		CANA Lunch Special   
-		CHV Engineering
+		   
+		CANA Energy - Engineering
 		Email Archiving Enabled
-		GSG.HTI.AllUsers
+		
 		GSG.HTI.DrawingManagement.RO
 		GSG.HTI.DrawingManagement.RW
 		GSG.HTI.Shared.RW
 		Plotter Access CHV
+		Plotter Access CUT
 		Printer Access RM 207-West Kitchen Area – HP 880Z Secondary
 		Printer Access RM225-File Room - Aficio 6004 Default 
 		SP.All.CHV.R   
@@ -69,16 +70,16 @@ function Add-EnergyCADDDesigner
 	Write-Debug "Adding groups to the Array"
 	Write-Verbose "Adding groups to the Array"
 	
-	$ADGroups.add('All CHV Users') | Out-Null
+	$ADGroups.add('CANA Energy Users') | Out-Null
 	$ADGroups.add('All Head Office Users') | Out-Null
 	$ADGroups.add('All Users') | Out-Null
-	$ADGroups.add('CHV Engineering') | Out-Null
+	$ADGroups.add('CANA Energy - Engineering') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
-	$ADGroups.add('GSG.HTI.AllUsers') | Out-Null
 	$ADGroups.add('GSG.HTI.DrawingManagement.RO') | Out-Null
 	$ADGroups.add('GSG.HTI.DrawingManagement.RW') | Out-Null
 	$ADGroups.add('GSG.HTI.Shared.RW') | Out-Null
 	$ADGroups.add('Plotter Access CHV') | Out-Null
+	$ADGroups.add('Plotter Access CUT') | Out-Null
 	$ADGroups.add('Printer Access RM 207-West Kitchen Area – HP 880Z Secondary') | Out-Null
 	$ADGroups.add('Printer Access RM225-File Room - Aficio 6004 Default') | Out-Null
 	$ADGroups.add('SP.All.CHV.R') | Out-Null

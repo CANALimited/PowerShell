@@ -38,7 +38,7 @@ function Add-EnergyFleetForman
 		CANA Construction iOS Users
 		CANA Equipment Management
 		CANA FWC Users
-		CANA Lunch Special
+		
 		CANA Utilities Equipment
 		CANA Utilities Field Mgrs & Supervisors
 		CANA Utilities Fleet
@@ -100,7 +100,7 @@ function Add-EnergyFleetForman
 	$ADGroups.add('CANA Construction iOS Users') | Out-Null
 	$ADGroups.add('CANA Equipment Management') | Out-Null
 	$ADGroups.add('CANA FWC Users') | Out-Null
-	$ADGroups.add('CANA Lunch Special') | Out-Null
+	
 	$ADGroups.add('CANA Utilities Equipment') | Out-Null
 	$ADGroups.add('CANA Utilities Field Mgrs & Supervisors') | Out-Null
 	$ADGroups.add('CANA Utilities Fleet') | Out-Null

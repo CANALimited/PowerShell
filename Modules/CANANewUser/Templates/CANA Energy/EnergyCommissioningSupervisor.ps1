@@ -22,23 +22,23 @@
 		Adds the user to the groups defined in this function
 
 		371APReviewer
-		All CHV Users
+		CANA Energy Users
 		All Head Office Users
 		All Users
 		CANA FWC Users
 		CANA High Voltage Commisioning Owners
 		CANA High Voltage iOS Users
 		CANA High Voltage Tenders
-		CANA Lunch Special
+		
 		CANA Utilities Incident Reports
-		CHV Engineering
+		CANA Energy - Engineering
 		CHV Incident Notification Reports
 		CHV Incident Notification Reports - Near Miss
 		CHV Safety Reports Group
 		Email Archiving Enabled
 		EXCH_PF_CHV_Calendar_Owner
 		FWC55Approvers
-		GSG.HTI.AllUsers
+		
 		GSG.HTI.BusinessDevelopment.RO
 		GSG.HTI.BusinessDevelopment.RW
 		GSG.HTI.Engineering.RO
@@ -99,34 +99,28 @@ function Add-CommissioningSupervisor
 	Write-Verbose "Adding groups to the Array"
 	
 	$ADGroups.add('All Users') | Out-Null
-	$ADGroups.add('371APReviewer') | Out-Null
-	$ADGroups.add('All CHV Users') | Out-Null
+	$ADGroups.add('CANA Energy Users') | Out-Null
 	$ADGroups.add('All Head Office Users') | Out-Null
 	$ADGroups.add('All Users') | Out-Null
-	$ADGroups.add('CANA FWC Users') | Out-Null
+	$ADGroups.add('CANA Energy - Energy') | Out-Null
+	$ADGroups.add('CANA Energy - Testing & Commisisoning') | Out-Null
+	$ADGroups.add('SP_CHV_Staff') | Out-Null
 	$ADGroups.add('CANA High Voltage Commisioning Owners') | Out-Null
-	$ADGroups.add('CANA High Voltage iOS Users') | Out-Null
-	$ADGroups.add('CANA High Voltage Tenders') | Out-Null
+	$ADGroups.add('CANA FWC Users') | Out-Null
 	$ADGroups.add('CANA Utilities Incident Reports') | Out-Null
-	$ADGroups.add('CHV Engineering') | Out-Null
+	$ADGroups.add('CANA Energy - Engineering') | Out-Null
 	$ADGroups.add('CHV Incident Notification Reports') | Out-Null
 	$ADGroups.add('CHV Incident Notification Reports - Near Miss') | Out-Null
 	$ADGroups.add('CHV Safety Reports Group') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
 	$ADGroups.add('EXCH_PF_CHV_Calendar_Owner') | Out-Null
-	$ADGroups.add('FWC55Approvers') | Out-Null
-	$ADGroups.add('GSG.HTI.AllUsers') | Out-Null
-	$ADGroups.add('GSG.HTI.BusinessDevelopment.RO') | Out-Null
-	$ADGroups.add('GSG.HTI.BusinessDevelopment.RW') | Out-Null
-	$ADGroups.add('GSG.HTI.Engineering.RO') | Out-Null
-	$ADGroups.add('GSG.HTI.PanelShop.RW') | Out-Null
-	$ADGroups.add('GSG.HTI.Shared.RW') | Out-Null
-	$ADGroups.add('GSG.HTI.TestingCommissioning.RO') | Out-Null
-	$ADGroups.add('GSG.HTI.TestingCommissioning.RW') | Out-Null
-	$ADGroups.add('Printer Access RMW202A-Mezzanine - Aficio 4504 Default') | Out-Null
-	$ADGroups.add('Social Committee') | Out-Null
+	$ADGroups.add('All Manager Services Users-1-813325514') | Out-Null
+	$ADGroups.add('Drive J - Business') | Out-Null
 	$ADGroups.add('SP.All.CHV.R') | Out-Null
 	$ADGroups.add('SP.HighVoltage.Milage') | Out-Null
+	$ADGroups.add('SP_CHV_Staff') | Out-Null
+	$ADGroups.add('SP_CUT_Foremen') | Out-Null
+	$ADGroups.add('SP_Energy_Foremen') | Out-Null
 	$ADGroups.add('SP_CHV_Managers') | Out-Null
 	$ADGroups.add('SP_Energy_Supervisors') | Out-Null
 	$ADGroups.add('SP_Managers_All') | Out-Null
@@ -146,15 +140,22 @@ function Add-CommissioningSupervisor
 	$ADGroups.add('tfa.CHVProjectJobs.Read') | Out-Null
 	$ADGroups.add('tfa.CHVProjectJobs.RWED') | Out-Null
 	$ADGroups.add('tfa.CHVTestingAndCommissioning.RWED') | Out-Null
-	$ADGroups.add('tfa.SafetyHVU.RWED') | Out-Null
-	$ADGroups.add('tfa.Shared.CHVCUSharedFolder.RWED') | Out-Null
 	$ADGroups.add('Viewpoint Users') | Out-Null
 	$ADGroups.add('Vista Viewpoint Reviewers') | Out-Null
 	$ADGroups.add('Vista Viewpoint Users') | Out-Null
 	$ADGroups.add('Xenapp_RDP') | Out-Null
 	$ADGroups.add('XenApp75_Users') | Out-Null
 	$ADGroups.add('XenApp75_Viewpoint_Prod') | Out-Null
+	$ADGroups.add('FWC52TimeKeeper') | Out-Null
 	
+	
+	$ADGroups.add('rfa.Energy') | Out-Null
+	$ADGroups.add('stfa.Energy.Archive.READ') | Out-Null
+	$ADGroups.add('stfa.Energy.Engineering.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Administrative.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Procurement.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.ProjectControls.RWED') | Out-Null
+	$ADGroups.add('tfa.Energy.READ') | Out-Null
 	
 	
 	Write-Debug "Array contains $ADGroups"

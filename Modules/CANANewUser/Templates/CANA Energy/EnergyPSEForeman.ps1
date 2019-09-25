@@ -25,7 +25,7 @@ function Add-EnergyPSEForeman
 		Adds the user to the groups defined in this function
 
 		All Users
-		All CHV Users
+		CANA Energy Users
 		CANA FWC Users
 		CANA High Voltage Commisioning Authors
 		CANA High Voltage iOS Users
@@ -58,7 +58,7 @@ function Add-EnergyPSEForeman
 	Write-Verbose "Adding groups to the Array"
 	
 	$ADGroups.add('All Users') | Out-Null
-	$ADGroups.add('All CHV Users') | Out-Null
+	$ADGroups.add('CANA Energy Users') | Out-Null
 	$ADGroups.add('CANA FWC Users') | Out-Null
 	$ADGroups.add('CANA High Voltage Commisioning Authors') | Out-Null
 	$ADGroups.add('CANA High Voltage iOS Users') | Out-Null

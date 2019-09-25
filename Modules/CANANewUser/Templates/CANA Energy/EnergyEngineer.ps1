@@ -21,13 +21,13 @@
 	.DESCRIPTION
 		Adds the user to the groups defined in this function
 
-		All CHV Users
+		CANA Energy Users
 		All Head Office Users
 		All Users
 		CANA FWC Users
-		CHV Engineering
+		CANA Energy - Engineering
 		Email Archiving Enabled
-		GSG.HTI.AllUsers
+		
 		Printer Access RM 207-West Kitchen Area – HP 880Z Secondary
 		Printer Access RM225-File Room - Aficio 6004 Default
 		SP_CHV_Staff
@@ -66,17 +66,37 @@ function Add-EnergyEngineer
 	Write-Verbose "Adding groups to the Array"
 	
 	$ADGroups.add('All Users') | Out-Null
-	$ADGroups.add('All CHV Users') | Out-Null
+	$ADGroups.add('CANA Energy Users') | Out-Null
 	$ADGroups.add('All Head Office Users') | Out-Null
 	$ADGroups.add('All Users') | Out-Null
 	$ADGroups.add('CANA FWC Users') | Out-Null
-	$ADGroups.add('CHV Engineering') | Out-Null
+	$ADGroups.add('CANA Energy - Engineering') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
-	$ADGroups.add('GSG.HTI.AllUsers') | Out-Null
-	$ADGroups.add('Printer Access RM 207-West Kitchen Area – HP 880Z Secondary') | Out-Null
-	$ADGroups.add('Printer Access RM225-File Room - Aficio 6004 Default') | Out-Null
+	$ADGroups.add('FWC52Approvers') | Out-Null
+	$ADGroups.add('Mbx.Locates') | Out-Null
+	$ADGroups.add('Plotter Access CHV') | Out-Null
+	$ADGroups.add('Plotter Access CUT') | Out-Null
+	$ADGroups.add('SP.All.CHV.R') | Out-Null
 	$ADGroups.add('SP_CHV_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Staff') | Out-Null
+	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.Read') | Out-Null
+	$ADGroups.add('tfa.CHVDWGScans.Read') | Out-Null
+	$ADGroups.add('tfa.CHVManual.RWED') | Out-Null
+	$ADGroups.add('tfa.CHVProjectJobs.Read') | Out-Null
+	$ADGroups.add('tfa.Utilities.CUWeeklyMeetings.RWED') | Out-Null
+	$ADGroups.add('tfa.Utilities.Estimate.RWED') | Out-Null
+	$ADGroups.add('tfa.Utilities.LessonsLearned.RWED') | Out-Null
+	$ADGroups.add('tfa.Utilities.Project.Estimate.RWED') | Out-Null
+	$ADGroups.add('tfa.Utilities.Project.RWED') | Out-Null
+	$ADGroups.add('tfa.Utilities.ProjectSummaries&References.RWED') | Out-Null
+	$ADGroups.add('tfa.Utilities.Purchasing.RWED') | Out-Null
+	$ADGroups.add('tfa.Utilities.RWED') | Out-Null
+	$ADGroups.add('tfa.Utilities.StructureandStandardsManualPlusMaps.RWED') | Out-Null
+	$ADGroups.add('Vista Viewpoint Reviewers') | Out-Null
+	$ADGroups.add('XenApp75_Viewpoint_Prod') | Out-Null
+	$ADGroups.add('SW_Firebird_Database') | Out-Null
+	
+
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null
 	$ADGroups.add('SW_Viewpoint_Users') | Out-Null
@@ -90,6 +110,13 @@ function Add-EnergyEngineer
 	$ADGroups.add('Vista Viewpoint Users') | Out-Null
 	$ADGroups.add('XenApp75_Users') | Out-Null
 	
+	$ADGroups.add('rfa.Energy') | Out-Null
+	$ADGroups.add('stfa.Energy.Archive.READ') | Out-Null
+	$ADGroups.add('stfa.Energy.Engineering.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Administrative.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Drafting.RWED') | Out-Null
+	$ADGroups.add('tfa.Energy.Procurement.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.READ') | Out-Null
 	
 	Write-Debug "Array contains $ADGroups"
 	Write-Verbose "Added list of groups to array"

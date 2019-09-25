@@ -53,16 +53,21 @@ function Add-EnergyGasFuser
 	Write-Verbose "Adding groups to the Array"
 	
 	$ADGroups.add('All Users') | Out-Null
-	$ADGroups.add('CANA Utilities iOS Users') | Out-Null
-	$ADGroups.add('CANA Utilities Users') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
-	$ADGroups.add('Plotter Access CUT') | Out-Null
-	$ADGroups.add('SP.All.CU.R') | Out-Null
-	$ADGroups.add('SP_CUT_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Foremen') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null
+	$ADGroups.add('CANA Energy Users') | Out-Null
+	$ADGroups.add('SP_Energy_Staff') | Out-Null
+	$ADGroups.add('CANA Energy Foreman - Infrastructure') | Out-Null
+	$ADGroups.add('CANA Energy Supervisors - Infrastructure') | Out-Null
+	$ADGroups.add('CANA Energy Users') | Out-Null
 	
-	
+	$ADGroups.add('rfa.Energy') | Out-Null
+	$ADGroups.add('stfa.Energy.Archive.READ') | Out-Null
+	$ADGroups.add('stfa.Energy.Engineering.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Administrative.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Procurement.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.READ') | Out-Null
 	
 	Write-Debug "Array contains $ADGroups"
 	Write-Verbose "Added list of groups to array"

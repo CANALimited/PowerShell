@@ -22,7 +22,7 @@
 	.DESCRIPTION
 		Adds the user to the groups defined in this function
 
-		All CHV Users
+		CANA Energy Users
 		All Head Office Users
 		All Users
 		CANA High Voltage Commisioning Owners
@@ -31,7 +31,7 @@
 		Email Archiving Enabled
 		EXCH_PF_CHV_Calendar_Author
 		FWC55TimeKeeper
-		GSG.HTI.AllUsers
+		
 		GSG.HTI.Shared.RW
 		GSG.HTI.TestingCommissioning.RW
 		HV Safety Committee Group
@@ -71,7 +71,7 @@ function Add-CommissioningTechnologistJr
 	Write-Verbose "Adding groups to the Array"
 	
 	$ADGroups.add('All Users') | Out-Null
-	$ADGroups.add('All CHV Users') | Out-Null
+	$ADGroups.add('CANA Energy Users') | Out-Null
 	$ADGroups.add('All Head Office Users') | Out-Null
 	$ADGroups.add('All Users') | Out-Null
 	$ADGroups.add('CANA High Voltage Commisioning Owners') | Out-Null
@@ -80,7 +80,7 @@ function Add-CommissioningTechnologistJr
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
 	$ADGroups.add('EXCH_PF_CHV_Calendar_Author') | Out-Null
 	$ADGroups.add('FWC55TimeKeeper') | Out-Null
-	$ADGroups.add('GSG.HTI.AllUsers') | Out-Null
+	
 	$ADGroups.add('GSG.HTI.Shared.RW') | Out-Null
 	$ADGroups.add('GSG.HTI.TestingCommissioning.RW') | Out-Null
 	$ADGroups.add('HV Safety Committee Group') | Out-Null

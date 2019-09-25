@@ -26,7 +26,7 @@ function Add-EnergyPSESupervisor
 
 		All Users
 		371APReviewer
-		All CHV Users
+		CANA Energy Users
 		All Head Office Users
 		CANA FWC Users
 		CANA High Voltage Commisioning Owners
@@ -36,7 +36,7 @@ function Add-EnergyPSESupervisor
 		Email Archiving Enabled
 		EXCH_PF_CHV_Calendar_Owner
 		FWC55Approvers
-		GSG.HTI.AllUsers
+		
 		GSG.HTI.Engineering.RO
 		GSG.HTI.PanelShop.RW
 		GSG.HTI.Shared.RW
@@ -80,7 +80,7 @@ function Add-EnergyPSESupervisor
 	
 	$ADGroups.add('All Users') | Out-Null
 	$ADGroups.add('371APReviewer') | Out-Null
-	$ADGroups.add('All CHV Users') | Out-Null
+	$ADGroups.add('CANA Energy Users') | Out-Null
 	$ADGroups.add('All Head Office Users') | Out-Null
 	$ADGroups.add('CANA FWC Users') | Out-Null
 	$ADGroups.add('CANA High Voltage Commisioning Owners') | Out-Null
@@ -90,7 +90,7 @@ function Add-EnergyPSESupervisor
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
 	$ADGroups.add('EXCH_PF_CHV_Calendar_Owner') | Out-Null
 	$ADGroups.add('FWC55Approvers') | Out-Null
-	$ADGroups.add('GSG.HTI.AllUsers') | Out-Null
+	
 	$ADGroups.add('GSG.HTI.Engineering.RO') | Out-Null
 	$ADGroups.add('GSG.HTI.PanelShop.RW') | Out-Null
 	$ADGroups.add('GSG.HTI.Shared.RW') | Out-Null

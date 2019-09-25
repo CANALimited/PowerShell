@@ -26,15 +26,15 @@ function Add-EnergyWarehouseCoordinator
 
 		All Users
 		371APReviewer
-		All CHV Users
+		CANA Energy Users
 		All Head Office Users
 		CANA Equipment Management
 		CANA FWC Users
-		CANA Lunch Special
+		
 		CANA Material Management
 		CANA Utilities Yard Sign-in
 		Email Archiving Enabled
-		GSG.HTI.AllUsers
+		
 		GSG.HTI.Conac.RW
 		GSG.HTI.Engineering.RW
 		GSG.HTI.PanelShop.RO
@@ -85,15 +85,15 @@ function Add-EnergyWarehouseCoordinator
 	
 	$ADGroups.add('All Users') | Out-Null
 	$ADGroups.add('371APReviewer') | Out-Null
-	$ADGroups.add('All CHV Users') | Out-Null
+	$ADGroups.add('CANA Energy Users') | Out-Null
 	$ADGroups.add('All Head Office Users') | Out-Null
 	$ADGroups.add('CANA Equipment Management') | Out-Null
 	$ADGroups.add('CANA FWC Users') | Out-Null
-	$ADGroups.add('CANA Lunch Special') | Out-Null
+	
 	$ADGroups.add('CANA Material Management') | Out-Null
 	$ADGroups.add('CANA Utilities Yard Sign-in') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
-	$ADGroups.add('GSG.HTI.AllUsers') | Out-Null
+	
 	$ADGroups.add('GSG.HTI.Conac.RW') | Out-Null
 	$ADGroups.add('GSG.HTI.Engineering.RW') | Out-Null
 	$ADGroups.add('GSG.HTI.PanelShop.RO') | Out-Null

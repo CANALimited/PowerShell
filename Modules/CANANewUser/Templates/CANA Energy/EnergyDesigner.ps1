@@ -24,16 +24,16 @@ function Add-Designer
 	.DESCRIPTION
 		Adds the user to the groups defined in this function
 
-		All CHV Users
+		CANA Energy Users
 		All Head Office Users
 		All Users
-		CANA Lunch Special
-		CHV Engineering
+		
+		CANA Energy - Engineering
 		CHV Incident Notification Reports
 		CHV Incident Notification Reports - Near Miss
 		Email Archiving Enabled
 		FWC55TimeKeeper
-		GSG.HTI.AllUsers
+		
 		GSG.HTI.DrawingManagement.RO
 		GSG.HTI.Engineering.RO
 		GSG.HTI.Engineering.RW
@@ -80,34 +80,29 @@ function Add-Designer
 	Write-Verbose "Adding groups to the Array"
 	
 	$ADGroups.add('All Users') | Out-Null
-	$ADGroups.add('All CHV Users') | Out-Null
+	$ADGroups.add('CANA Energy Users') | Out-Null
 	$ADGroups.add('All Head Office Users') | Out-Null
 	$ADGroups.add('All Users') | Out-Null
-	$ADGroups.add('CANA Lunch Special') | Out-Null
-	$ADGroups.add('CHV Engineering') | Out-Null
+	
+	$ADGroups.add('CANA Energy - Engineering') | Out-Null
 	$ADGroups.add('CHV Incident Notification Reports') | Out-Null
 	$ADGroups.add('CHV Incident Notification Reports - Near Miss') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
-	$ADGroups.add('FWC55TimeKeeper') | Out-Null
-	$ADGroups.add('GSG.HTI.AllUsers') | Out-Null
-	$ADGroups.add('GSG.HTI.DrawingManagement.RO') | Out-Null
-	$ADGroups.add('GSG.HTI.Engineering.RO') | Out-Null
-	$ADGroups.add('GSG.HTI.Engineering.RW') | Out-Null
-	$ADGroups.add('GSG.HTI.Shared.RW') | Out-Null
-	$ADGroups.add('GSG.HTI.TestingCommissioning.RW') | Out-Null
-	$ADGroups.add('Printer Access RM 207-West Kitchen Area – HP 880Z Secondary') | Out-Null
-	$ADGroups.add('Printer Access RM225-File Room - Aficio 6004 Default') | Out-Null
+	$ADGroups.add('FWC52TimeKeeper') | Out-Null
+	$ADGroups.add('Plotter Access CHV') | Out-Null
+	$ADGroups.add('Plotter Access CUT') | Out-Null
+	$ADGroups.add('SW_Viewpoint_Users') | Out-Null
+	$ADGroups.add('Viewpoint Users') | Out-Null
 	$ADGroups.add('SP.All.CHV.R') | Out-Null
 	$ADGroups.add('SP_CHV_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Staff') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.Read') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
-	$ADGroups.add('SW_Acrobat_Pro_Users') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null
 	$ADGroups.add('tfa.CHVArchive.Read') | Out-Null
 	$ADGroups.add('tfa.CHVCommon.RWED') | Out-Null
-	$ADGroups.add('tfa.CHVDrawingManagement.Read') | Out-Null
-	$ADGroups.add('tfa.CHVDWGScans.Read') | Out-Null
+	$ADGroups.add('tfa.CHVDrawingManagement.RWED') | Out-Null
+	$ADGroups.add('tfa.CHVDWGScans.RWED') | Out-Null
 	$ADGroups.add('tfa.CHVEngineering.RWED') | Out-Null
 	$ADGroups.add('tfa.CHVProjectJobs.JobNumber.Read') | Out-Null
 	$ADGroups.add('tfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
@@ -115,6 +110,15 @@ function Add-Designer
 	$ADGroups.add('tfa.CHVProjectJobs.RWED') | Out-Null
 	$ADGroups.add('tfa.CHVTestingAndCommissioning.RWED') | Out-Null
 	$ADGroups.add('XenApp75_Users') | Out-Null
+	$ADGroups.add('Drive J - Business') | Out-Null
+	
+	$ADGroups.add('rfa.Energy') | Out-Null
+	$ADGroups.add('stfa.Energy.Archive.READ') | Out-Null
+	$ADGroups.add('stfa.Energy.Engineering.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Administrative.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Drafting.RWED') | Out-Null
+	$ADGroups.add('tfa.Energy.ProjectControls.RWED') | Out-Null
+	$ADGroups.add('tfa.Energy.READ') | Out-Null
 	
 	
 	Write-Debug "Array contains $ADGroups"
