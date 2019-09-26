@@ -90,8 +90,6 @@ function Add-EnergyPurchaser
 	$ADGroups.add('CANA Utilities Purchasing') | Out-Null
 	$ADGroups.add('Drive J - Business') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
-	$ADGroups.add('SP.All.CU.R') | Out-Null
-	$ADGroups.add('SP_CUT_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Staff') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
 	$ADGroups.add('stfa.Utilities.Project.05Procurement.RWED') | Out-Null

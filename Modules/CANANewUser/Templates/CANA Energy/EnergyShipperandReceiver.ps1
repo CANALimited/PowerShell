@@ -93,8 +93,6 @@ function Add-EnergyShipperandReceiver
 	$ADGroups.add('Drive J - Business') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
 	$ADGroups.add('PF_Accounting_POReceiving_Permission') | Out-Null
-	$ADGroups.add('SP.All.CU.R') | Out-Null
-	$ADGroups.add('SP_CUT_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Staff') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null

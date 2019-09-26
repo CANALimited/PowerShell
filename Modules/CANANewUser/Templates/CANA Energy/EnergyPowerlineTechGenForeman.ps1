@@ -79,6 +79,13 @@ function Add-EnergyCADDDesigner
 	$ADGroups.add('tfa.Energy.Administrative.READ') | Out-Null
 	$ADGroups.add('tfa.Energy.Procurement.READ') | Out-Null
 	$ADGroups.add('tfa.Energy.READ') | Out-Null
+
+	$ADGroups.add('SP_Energy_Staff') | Out-Null
+	$ADGroups.add('SP_Energy_Foremen') | Out-Null
+	$ADGroups.add('SP_Managers_All') | Out-Null
+
+
+
 	
 	
 	Write-Debug "Array contains $ADGroups"

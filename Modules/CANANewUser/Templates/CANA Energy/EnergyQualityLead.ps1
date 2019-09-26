@@ -81,7 +81,7 @@ function Add-EnergyQualityLead
 	$ADGroups.add('tfa.Energy.Administrative.READ') | Out-Null
 	$ADGroups.add('tfa.Energy.ProjectControls.RWED') | Out-Null
 	$ADGroups.add('tfa.Energy.READ') | Out-Null
-
+	$ADGroups.add('All Manager Services Users-1-813325514') | Out-Null
 	$ADGroups.add('All Users') | Out-Null
 	$ADGroups.add('CANA Energy Users') | Out-Null
 	$ADGroups.add('All Head Office Users') | Out-Null
@@ -98,12 +98,12 @@ function Add-EnergyQualityLead
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
 	$ADGroups.add('EXCH_PF_CHV_Calendar_Owner') | Out-Null
 	$ADGroups.add('FWC52Approvers') | Out-Null
-	
-	$ADGroups.add('SP.All.CHV.R') | Out-Null
-	$ADGroups.add('SP.HighVoltage.Milage') | Out-Null
-	$ADGroups.add('SP_CHV_Managers') | Out-Null
-	$ADGroups.add('SP_Energy_Supervisors') | Out-Null
+	$ADGroups.add('Drive J - Business') | Out-Null
+
+	$ADGroups.add('SP_Energy_Foremen') | Out-Null
 	$ADGroups.add('SP_Managers_All') | Out-Null
+	$ADGroups.add('SP_Energy_Staff') | Out-Null
+
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null
 	$ADGroups.add('SW_Viewpoint_Users') | Out-Null

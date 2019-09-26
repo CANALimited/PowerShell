@@ -89,8 +89,11 @@ function Add-EnergyProjectManager
 	$ADGroups.add('CANA FWC Users') | Out-Null
 	$ADGroups.add('CHV Engineering') | Out-Null
 	$ADGroups.add('FWC52Approvers') | Out-Null
-	$ADGroups.add('SP.All.CHV.R') | Out-Null
-	$ADGroups.add('SP_CHV_Managers') | Out-Null
+	$ADGroups.add('Drive J - Business') | Out-Null
+
+	$ADGroups.add('SP_Managers_All') | Out-Null
+	$ADGroups.add('SP_Energy_project_managers') | Out-Null
+	$ADGroups.add('SP_Energy_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Weekly_Reports_Contribute') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.Read') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
@@ -114,6 +117,8 @@ function Add-EnergyProjectManager
 	$ADGroups.add('Vista Viewpoint Users') | Out-Null
 	$ADGroups.add('XenApp75_Users') | Out-Null
 	$ADGroups.add('XenApp75_Viewpoint_Prod') | Out-Null
+	$ADGroups.add('Drive J - Business') | Out-Null
+
 	
 	Write-Debug "Array contains $ADGroups"
 	Write-Verbose "Added list of groups to array"

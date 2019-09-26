@@ -98,12 +98,10 @@ function Add-EnergyElectricianSupervisor
 	$ADGroups.add('CHV Incident Notification Reports') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
 	$ADGroups.add('FWC52Approvers') | Out-Null
-	$ADGroups.add('SP.All.CU.R') | Out-Null
-	$ADGroups.add('SP.Utilities.Milage') | Out-Null
-	$ADGroups.add('SP.UtilitiesCert') | Out-Null
-	$ADGroups.add('SP_CUT_Managers') | Out-Null
 	$ADGroups.add('SP_Energy_Supervisors') | Out-Null
 	$ADGroups.add('SP_Managers_All') | Out-Null
+	$ADGroups.add('SP_Energy_Staff') | Out-Null
+	$ADGroups.add('Drive J - Business') | Out-Null
 	$ADGroups.add('stfa.Utilities.Project.02RegulatoryExternalAgencies.RWED') | Out-Null
 	$ADGroups.add('stfa.Utilities.Project.07Drawings.RWED') | Out-Null
 	$ADGroups.add('stfa.Utilities.Project.08Construction.RWED') | Out-Null

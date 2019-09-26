@@ -81,37 +81,33 @@ function Add-EnergyPurchaserSr
 	$ADGroups.add('tfa.Energy.READ') | Out-Null
 
 	$ADGroups.add('CANA Energy Users') | Out-Null
-$ADGroups.add('All Head Office Users') | Out-Null
-$ADGroups.add('All Users') | Out-Null
-$ADGroups.add('CANA Energy - Project Services') | Out-Null
-$ADGroups.add('CANA Energy Procurement') | Out-Null
-$ADGroups.add('CANA FWC Users') | Out-Null
-$ADGroups.add('CANA Utilities PMs and Interns') | Out-Null
-$ADGroups.add('CANA Utilities Purchasing') | Out-Null
-$ADGroups.add('Drive J - Business') | Out-Null
-$ADGroups.add('Email Archiving Enabled') | Out-Null
-$ADGroups.add('SP.All.CU.R') | Out-Null
-$ADGroups.add('SP_CUT_Staff') | Out-Null
-$ADGroups.add('SP_Energy_Staff') | Out-Null
-$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
-$ADGroups.add('stfa.Utilities.Project.05Procurement.RWED') | Out-Null
-$ADGroups.add('SW_FWC_Users') | Out-Null
-$ADGroups.add('SW_Viewpoint_Test') | Out-Null
-$ADGroups.add('SW_Viewpoint_Users') | Out-Null
-$ADGroups.add('tfa.CHVEngineering.RWED') | Out-Null
-$ADGroups.add('tfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
-$ADGroups.add('tfa.CHVProjectJobs.RWED') | Out-Null
-$ADGroups.add('tfa.SafetyHVU.RWED') | Out-Null
-$ADGroups.add('tfa.Shared.RWED') | Out-Null
-$ADGroups.add('tfa.Utilities.Estimate.RWED') | Out-Null
-$ADGroups.add('tfa.Utilities.Project.RWED') | Out-Null
-$ADGroups.add('tfa.Utilities.Purchasing.RWED') | Out-Null
-$ADGroups.add('tfa.Utilities.RWED') | Out-Null
-$ADGroups.add('tfa.Utilities.Scans.RWED') | Out-Null
-$ADGroups.add('Viewpoint Users') | Out-Null
-$ADGroups.add('Vista Viewpoint Users') | Out-Null
-$ADGroups.add('XenApp75_Users') | Out-Null
-$ADGroups.add('XenApp75_Viewpoint_Prod') | Out-Null
+	$ADGroups.add('All Head Office Users') | Out-Null
+	$ADGroups.add('All Users') | Out-Null
+	$ADGroups.add('CANA Energy - Project Services') | Out-Null
+	$ADGroups.add('CANA Energy Procurement') | Out-Null
+	$ADGroups.add('CANA FWC Users') | Out-Null
+	$ADGroups.add('Drive J - Business') | Out-Null
+	$ADGroups.add('Email Archiving Enabled') | Out-Null
+	$ADGroups.add('SP_Energy_Staff') | Out-Null
+	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
+	$ADGroups.add('stfa.Utilities.Project.05Procurement.RWED') | Out-Null
+	$ADGroups.add('SW_FWC_Users') | Out-Null
+	$ADGroups.add('SW_Viewpoint_Test') | Out-Null
+	$ADGroups.add('SW_Viewpoint_Users') | Out-Null
+	$ADGroups.add('tfa.CHVEngineering.RWED') | Out-Null
+	$ADGroups.add('tfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
+	$ADGroups.add('tfa.CHVProjectJobs.RWED') | Out-Null
+	$ADGroups.add('tfa.SafetyHVU.RWED') | Out-Null
+	$ADGroups.add('tfa.Shared.RWED') | Out-Null
+	$ADGroups.add('tfa.Utilities.Estimate.RWED') | Out-Null
+	$ADGroups.add('tfa.Utilities.Project.RWED') | Out-Null
+	$ADGroups.add('tfa.Utilities.Purchasing.RWED') | Out-Null
+	$ADGroups.add('tfa.Utilities.RWED') | Out-Null
+	$ADGroups.add('tfa.Utilities.Scans.RWED') | Out-Null
+	$ADGroups.add('Viewpoint Users') | Out-Null
+	$ADGroups.add('Vista Viewpoint Users') | Out-Null
+	$ADGroups.add('XenApp75_Users') | Out-Null
+	$ADGroups.add('XenApp75_Viewpoint_Prod') | Out-Null
 
 Write-Debug "Array contains $ADGroups"
 Write-Verbose "Added list of groups to array"

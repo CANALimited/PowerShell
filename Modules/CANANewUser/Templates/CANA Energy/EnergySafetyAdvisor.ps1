@@ -92,12 +92,8 @@ function Add-EnergySafetyAdvisor
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
 	$ADGroups.add('EXCH_PF_CHV_Calendar_Author') | Out-Null
 	$ADGroups.add('Safety_Sec') | Out-Null
-	$ADGroups.add('SP.All.CU.R') | Out-Null
 	$ADGroups.add('SP.Energy.Safety.Team') | Out-Null
-	$ADGroups.add('SP.Utilities.Milage') | Out-Null
-	$ADGroups.add('SP.UtilitiesCert') | Out-Null
-	$ADGroups.add('SP_CUT_Staff') | Out-Null
-	$ADGroups.add('SP_EHS_Staff') | Out-Null
+	$ADGroups.add('SP_Energy_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Safety_Staff') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null
@@ -112,6 +108,8 @@ function Add-EnergySafetyAdvisor
 	$ADGroups.add('Vista Viewpoint Users') | Out-Null
 	$ADGroups.add('XenApp75_Users') | Out-Null
 	$ADGroups.add('XenApp75_Viewpoint_Prod') | Out-Null
+	$ADGroups.add('Drive J - Business') | Out-Null
+
 	
 	Write-Debug "Array contains $ADGroups"
 	Write-Verbose "Added list of groups to array"

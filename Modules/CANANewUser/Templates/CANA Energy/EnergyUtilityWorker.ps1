@@ -56,10 +56,9 @@ function Add-EnergyUtilityWorker
 	$ADGroups.add('tfa.Energy.READ') | Out-Null
 	
 	$ADGroups.add('All Users') | Out-Null
-	$ADGroups.add('SP_CUT_Staff') | Out-Null
-	$ADGroups.add('CANA Utilities Users') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null
 	$ADGroups.add('SP_Energy_Staff') | Out-Null
+
 
 	
 	

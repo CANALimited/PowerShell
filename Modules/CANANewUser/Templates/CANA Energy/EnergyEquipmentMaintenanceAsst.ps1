@@ -80,6 +80,9 @@ function Add-EnergyEquipmentMaintenanceAsst
 	
 	$ADGroups.add('All Users') | Out-Null
 	$ADGroups.add('CANA Energy Users') | Out-Null
+	$ADGroups.add('SP_Energy_Staff') | Out-Null
+
+
 	
 	Write-Debug "Array contains $ADGroups"
 	Write-Verbose "Added list of groups to array"

@@ -95,12 +95,11 @@ function Add-EnergyPSESupervisor
 	$ADGroups.add('CHV Engineering') | Out-Null
 	$ADGroups.add('CHV Incident Notification Reports') | Out-Null
 	$ADGroups.add('CHV Incident Notification Reports - Near Miss') | Out-Null
+	$ADGroups.add('Drive J - Business') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
 	$ADGroups.add('EXCH_PF_CHV_Calendar_Author') | Out-Null
 	$ADGroups.add('FWC52Approvers') | Out-Null
-	$ADGroups.add('SP.All.CHV.R') | Out-Null
-	$ADGroups.add('SP.HighVoltage.Milage') | Out-Null
-	$ADGroups.add('SP_CHV_Staff') | Out-Null
+	$ADGroups.add('SP_Energy_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Supervisors') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null

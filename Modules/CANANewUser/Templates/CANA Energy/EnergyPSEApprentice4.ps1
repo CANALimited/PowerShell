@@ -47,7 +47,6 @@ function Add-EnergyPSEApprentice4
 	Write-Verbose "Adding groups to the Array"
 	
 	$ADGroups.add('All Users') | Out-Null
-	$ADGroups.add('SP_CHV_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Staff') | Out-Null
 
 	$ADGroups.add('rfa.Energy') | Out-Null

@@ -48,7 +48,6 @@ function Add-EnergyPSEJourneyman
 	
 	$ADGroups.add('All Users') | Out-Null
 	$ADGroups.add('SP_Energy_Staff') | Out-Null
-	$ADGroups.add('SP_CHV_Staff') | Out-Null
 
 	$ADGroups.add('rfa.Energy') | Out-Null
 	$ADGroups.add('stfa.Energy.Archive.READ') | Out-Null

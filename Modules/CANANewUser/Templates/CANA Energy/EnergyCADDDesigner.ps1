@@ -75,9 +75,9 @@ function Add-EnergyCADDDesigner
 	$ADGroups.add('All Users') | Out-Null
 	$ADGroups.add('CANA Energy - Engineering') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
-	
-	$ADGroups.add('SP.All.CHV.R') | Out-Null
-	$ADGroups.add('SP_CHV_Staff') | Out-Null
+	$ADGroups.add('Drive J - Business') | Out-Null
+
+	$ADGroups.add('SP_Energy_Staff') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.Read') | Out-Null
 	$ADGroups.add('SW_Acrobat_Pro_Users') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null

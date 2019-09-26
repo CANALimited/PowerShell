@@ -77,10 +77,10 @@ function Add-EnergyPSEForeman
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
 	$ADGroups.add('EXCH_PF_CHV_Calendar_Author') | Out-Null
 	$ADGroups.add('FWC52TimeKeeper') | Out-Null
-	$ADGroups.add('SP.All.CHV.R') | Out-Null
-	$ADGroups.add('SP_CHV_Staff') | Out-Null
-	$ADGroups.add('SP_CUT_Foremen') | Out-Null
+	$ADGroups.add('SP_Energy_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Foremen') | Out-Null
+	$ADGroups.add('Drive J - Business') | Out-Null
+	$ADGroups.add('SP_Managers_All') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.Read') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null

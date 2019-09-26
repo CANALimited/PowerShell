@@ -127,25 +127,20 @@ function Add-EnergySafetyMgr
 	$ADGroups.add('CHV Incident Notification Reports') | Out-Null
 	$ADGroups.add('CHV Incident Notification Reports - EMS') | Out-Null
 	$ADGroups.add('CHV Incident Notification Reports - Near Miss') | Out-Null
-	$ADGroups.add('Drive K - DFS_Mapping') | Out-Null
+	$ADGroups.add('Drive J - Business') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
 	$ADGroups.add('Est_Sec') | Out-Null
 	$ADGroups.add('FWC52TimeKeeper') | Out-Null
-	$ADGroups.add('Plotter Access CUT') | Out-Null
-	$ADGroups.add('Print_Basement_Sec') | Out-Null
-	$ADGroups.add('Printer Access RM407-4th Floor Kitchen Area - Aficio 4503 Sec') | Out-Null
-	$ADGroups.add('Printer Access RM438Y-Southeast- Ricoh 4504ex Default') | Out-Null
 	$ADGroups.add('Safety.Utilities.Orientation') | Out-Null
 	$ADGroups.add('Safety_Sec') | Out-Null
 	$ADGroups.add('Safety_Sec_Modify') | Out-Null
 	$ADGroups.add('Salaried Employees') | Out-Null
-	$ADGroups.add('SP.All.CU.R') | Out-Null
-	$ADGroups.add('SP.ConstructionCert') | Out-Null
 	$ADGroups.add('SP.Energy.Safety.Team') | Out-Null
-	$ADGroups.add('SP.Utilities.Milage') | Out-Null
-	$ADGroups.add('SP_CUT_Staff') | Out-Null
+	$ADGroups.add('SP_Energy_Staff') | Out-Null
 	$ADGroups.add('SP_EHS_Managers') | Out-Null
 	$ADGroups.add('SP_EHS_Staff') | Out-Null
+	$ADGroups.add('SP_Managers_All') | Out-Null
+	$ADGroups.add('SP_Energy_CRM_Contribute') | Out-Null
 	$ADGroups.add('SP_Energy_Safety_Staff') | Out-Null
 	$ADGroups.add('stfa.CANAConstruction.HOSafetyFiling.RWED') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null

@@ -88,18 +88,12 @@ function Add-EnergyProjectControlsLead
 	$ADGroups.add('All Users') | Out-Null
 	$ADGroups.add('CANA Energy Project Controls-11698508022') | Out-Null
 	$ADGroups.add('CANA FWC Users') | Out-Null
-	$ADGroups.add('CANA Utilities PMs and Interns') | Out-Null
-	$ADGroups.add('CANA Engineering Students') | Out-Null
-	$ADGroups.add('CANA Utilities URD') | Out-Null
-	$ADGroups.add('All CANA Utilities Users') | Out-Null
 	$ADGroups.add('Drive J - Business') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
 	$ADGroups.add('Mbx.Locates') | Out-Null
-	$ADGroups.add('SP.All.CU.R') | Out-Null
-	$ADGroups.add('SP.ConstructionCert') | Out-Null
-	$ADGroups.add('SP.UtilitiesCert') | Out-Null
-	$ADGroups.add('SP_CUT_Staff') | Out-Null
+	$ADGroups.add('SP_Energy_Staff') | Out-Null
 	$ADGroups.add('SP_Managers_All') | Out-Null
+	$ADGroups.add('SP_Energy_Foremen') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
 	$ADGroups.add('stfa.Utilities.Project.RWED') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null
@@ -130,6 +124,8 @@ function Add-EnergyProjectControlsLead
 	$ADGroups.add('Vista Viewpoint Users') | Out-Null
 	$ADGroups.add('XenApp75_Users') | Out-Null
 	$ADGroups.add('XenApp75_Viewpoint_Prod') | Out-Null
+	$ADGroups.add('CANA Energy PMs') | Out-Null
+
 	
 	Write-Debug "Array contains $ADGroups"
 	Write-Verbose "Added list of groups to array"

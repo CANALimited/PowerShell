@@ -93,11 +93,10 @@ function Add-EnergyCADDDesigner
 	$ADGroups.add('Drive J - Business') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
 	$ADGroups.add('FWC52Approvers') | Out-Null
-	$ADGroups.add('SP.All.CHV.R') | Out-Null
-	$ADGroups.add('SP_CHV_Managers') | Out-Null
 	$ADGroups.add('SP_Energy_Management') | Out-Null
 	$ADGroups.add('SP_Energy_VIPs') | Out-Null
 	$ADGroups.add('SP_Managers_All') | Out-Null
+	$ADGroups.add('SP_Energy_Staff') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.Read') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null

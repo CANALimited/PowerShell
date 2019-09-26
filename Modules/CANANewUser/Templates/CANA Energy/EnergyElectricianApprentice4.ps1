@@ -73,7 +73,6 @@ function Add-EnergyElectricianApprentice4
 	$ADGroups.add('CANA Energy Users') | Out-Null
 	$ADGroups.add('All Users') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
-	$ADGroups.add('SP_CUT_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Staff') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null
 	

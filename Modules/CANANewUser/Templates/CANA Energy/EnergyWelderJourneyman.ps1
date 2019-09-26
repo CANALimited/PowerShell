@@ -75,8 +75,6 @@ function Add-EnergyWelderJourneyman
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
 	$ADGroups.add('All Head Office Users') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
-	$ADGroups.add('SP.All.CU.R') | Out-Null
-	$ADGroups.add('SP_CUT_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Staff') | Out-Null
 	$ADGroups.add('SP_Fleet_Staff') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null

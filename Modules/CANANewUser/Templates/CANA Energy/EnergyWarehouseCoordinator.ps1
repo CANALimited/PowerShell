@@ -100,9 +100,9 @@ function Add-EnergyWarehouseCoordinator
 	$ADGroups.add('CANA Material Management') | Out-Null
 	$ADGroups.add('CANA Utilities Yard Sign-in') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
-	$ADGroups.add('SP.All.CHV.R') | Out-Null
-	$ADGroups.add('SP_CHV_Staff') | Out-Null
+	$ADGroups.add('Drive J - Business') | Out-Null
 	$ADGroups.add('SP_Energy_Staff') | Out-Null
+	$ADGroups.add('SP_Energy_Supervisors') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.Read') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null
 	$ADGroups.add('SW_Viewpoint_Test') | Out-Null

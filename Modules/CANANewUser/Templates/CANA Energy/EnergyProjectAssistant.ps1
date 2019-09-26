@@ -83,8 +83,7 @@ function Add-EnergyProjectAssistant
 	$ADGroups.add('CANA FWC Users') | Out-Null
 	$ADGroups.add('CHV Engineering') | Out-Null
 	$ADGroups.add('EXCHMBX-HTIDwgCtrl') | Out-Null
-	$ADGroups.add('SP.All.CHV.R') | Out-Null
-	$ADGroups.add('SP_CHV_Staff') | Out-Null
+	$ADGroups.add('SP_Energy_Staff') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null
 	$ADGroups.add('SW_MFM_DATABASE_RO') | Out-Null
@@ -103,7 +102,7 @@ function Add-EnergyProjectAssistant
 	$ADGroups.add('Vista Viewpoint Users') | Out-Null
 	$ADGroups.add('XenApp75_Users') | Out-Null
 	$ADGroups.add('XenApp75_Viewpoint_Prod') | Out-Null
-	
+	$ADGroups.add('Drive J - Business') | Out-Null
 
 	
 	Write-Debug "Array contains $ADGroups"

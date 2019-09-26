@@ -86,7 +86,8 @@ function Add-EnergyDirectorofEngineering
 	$ADGroups.add('tfa.Energy.Procurement.READ') | Out-Null
 	$ADGroups.add('tfa.Energy.ProjectControls.RWED') | Out-Null
 	$ADGroups.add('tfa.Energy.READ') | Out-Null
-	
+	$ADGroups.add('Drive J - Business') | Out-Null
+
 	$ADGroups.add('SP_Energy_VIPs') | Out-Null
 	$ADGroups.add('All Head Office Users') | Out-Null
 	$ADGroups.add('All Manager Services Users-1-813325514') | Out-Null
@@ -98,9 +99,6 @@ function Add-EnergyDirectorofEngineering
 	$ADGroups.add('CANA High Voltage Commisioning Owners') | Out-Null
 	$ADGroups.add('CHV Engineering') | Out-Null
 	$ADGroups.add('FWC52Approvers') | Out-Null
-	$ADGroups.add('SP KnowMatrix Notice CU') | Out-Null
-	$ADGroups.add('SP.All.CHV.R') | Out-Null
-	$ADGroups.add('SP_CHV_Managers') | Out-Null
 	$ADGroups.add('SP_Energy_CRM_Contribute') | Out-Null
 	$ADGroups.add('SP_Energy_Management') | Out-Null
 	$ADGroups.add('SP_Energy_Staff') | Out-Null

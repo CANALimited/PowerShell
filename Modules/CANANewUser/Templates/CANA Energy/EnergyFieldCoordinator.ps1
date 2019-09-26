@@ -71,7 +71,6 @@ function Add-EnergyFieldCoordinator
 	$ADGroups.add('CANA Utilities Users') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
 	$ADGroups.add('Mbx.Locates') | Out-Null
-	$ADGroups.add('SP_CUT_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Staff') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null
 	$ADGroups.add('tfa.Utilities.Estimate.RWED') | Out-Null

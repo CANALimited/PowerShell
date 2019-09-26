@@ -80,6 +80,10 @@ function Add-EnergyCADDDesigner
 	
 	$ADGroups.add('All Users') | Out-Null
 	$ADGroups.add('CANA Energy Users') | Out-Null
+	$ADGroups.add('SP_Energy_Staff') | Out-Null
+	$ADGroups.add('Drive J - Business') | Out-Null
+
+
 	
 	Write-Debug "Array contains $ADGroups"
 	Write-Verbose "Added list of groups to array"

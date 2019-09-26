@@ -90,10 +90,9 @@ function Add-EnergyCADDDesigner
 	$ADGroups.add('CANA Energy Tenders') | Out-Null
 	$ADGroups.add('Drive J - Business') | Out-Null
 	$ADGroups.add('FWC52Approvers') | Out-Null
-	$ADGroups.add('SP.CHV.Admins') | Out-Null
-	$ADGroups.add('SP_CHV_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_CRM_Contribute') | Out-Null
 	$ADGroups.add('SP_Managers_All') | Out-Null
+	$ADGroups.add('SP_Energy_Staff') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
 	$ADGroups.add('SW_Bid2Win_Users') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null

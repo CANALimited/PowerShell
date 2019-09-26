@@ -89,21 +89,15 @@ function Add-EnergySafetyLead
 	$ADGroups.add('CANA Energy Approved Drivers') | Out-Null
 	$ADGroups.add('CANA Energy Safety') | Out-Null
 	$ADGroups.add('CANA FWC Users') | Out-Null
-	$ADGroups.add('CANA Utilities High Voltage Safety') | Out-Null
-	$ADGroups.add('All CANA Utilities Users') | Out-Null
-	$ADGroups.add('CHV Incident Notification Reports') | Out-Null
-	$ADGroups.add('CHV Incident Notification Reports - Near Miss') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
 	$ADGroups.add('Drive J - Business') | Out-Null
 	$ADGroups.add('Est_Sec') | Out-Null
 	$ADGroups.add('Safety_Sec') | Out-Null
-	$ADGroups.add('SP.All.Construction.R') | Out-Null
-	$ADGroups.add('sp.Construction.Contribute') | Out-Null
 	$ADGroups.add('SP.Energy.Safety.Team') | Out-Null
 	$ADGroups.add('SP.Training.Contribute') | Out-Null
-	$ADGroups.add('SP_EHS_Managers') | Out-Null
-	$ADGroups.add('SP_EHS_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Safety_Staff') | Out-Null
+	$ADGroups.add('SP_Energy_Staff') | Out-Null
+	$ADGroups.add('All Manager Services Users-1-813325514') | Out-Null
 	$ADGroups.add('stfa.CANAConstruction.HOSafetyFiling.RWED') | Out-Null
 	$ADGroups.add('stfa.CCCLProjectJobs.RWED') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
