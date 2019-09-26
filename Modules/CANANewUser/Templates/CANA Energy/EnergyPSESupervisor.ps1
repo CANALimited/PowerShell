@@ -78,24 +78,28 @@ function Add-EnergyPSESupervisor
 	Write-Debug "Adding groups to the Array"
 	Write-Verbose "Adding groups to the Array"
 	
-	$ADGroups.add('All Users') | Out-Null
-	$ADGroups.add('371APReviewer') | Out-Null
+	$ADGroups.add('rfa.Energy') | Out-Null
+	$ADGroups.add('stfa.Energy.Archive.READ') | Out-Null
+	$ADGroups.add('stfa.Energy.Engineering.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Administrative.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Procurement.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.READ') | Out-Null
+
 	$ADGroups.add('CANA Energy Users') | Out-Null
 	$ADGroups.add('All Head Office Users') | Out-Null
+	$ADGroups.add('All Users') | Out-Null
+	$ADGroups.add('CANA Energy - Energy') | Out-Null
+	$ADGroups.add('CANA Energy - Substation') | Out-Null
 	$ADGroups.add('CANA FWC Users') | Out-Null
 	$ADGroups.add('CANA High Voltage Commisioning Owners') | Out-Null
+	$ADGroups.add('CHV Engineering') | Out-Null
 	$ADGroups.add('CHV Incident Notification Reports') | Out-Null
 	$ADGroups.add('CHV Incident Notification Reports - Near Miss') | Out-Null
-	$ADGroups.add('CHV Safety Reports Group') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
-	$ADGroups.add('EXCH_PF_CHV_Calendar_Owner') | Out-Null
-	$ADGroups.add('FWC55Approvers') | Out-Null
-	
-	$ADGroups.add('GSG.HTI.Engineering.RO') | Out-Null
-	$ADGroups.add('GSG.HTI.PanelShop.RW') | Out-Null
-	$ADGroups.add('GSG.HTI.Shared.RW') | Out-Null
-	$ADGroups.add('GSG.HTI.TestingCommissioning.RW') | Out-Null
+	$ADGroups.add('EXCH_PF_CHV_Calendar_Author') | Out-Null
+	$ADGroups.add('FWC52Approvers') | Out-Null
 	$ADGroups.add('SP.All.CHV.R') | Out-Null
+	$ADGroups.add('SP.HighVoltage.Milage') | Out-Null
 	$ADGroups.add('SP_CHV_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Supervisors') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
@@ -104,11 +108,11 @@ function Add-EnergyPSESupervisor
 	$ADGroups.add('tfa.CHVArchive.Read') | Out-Null
 	$ADGroups.add('tfa.CHVCommon.RWED') | Out-Null
 	$ADGroups.add('tfa.CHVEngineering.Read') | Out-Null
-	$ADGroups.add('tfa.CHVPanelShop.RWED') | Out-Null
 	$ADGroups.add('tfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
 	$ADGroups.add('tfa.CHVProjectJobs.Read') | Out-Null
 	$ADGroups.add('tfa.CHVProjectJobs.RWED') | Out-Null
-	$ADGroups.add('tfa.CHVTestingAndCommissioning.RWED') | Out-Null
+	$ADGroups.add('tfa.Safety.InternalReporting.Read') | Out-Null
+	$ADGroups.add('tfa.SafetyHVU.Read') | Out-Null
 	$ADGroups.add('Vista Viewpoint Reviewers') | Out-Null
 	$ADGroups.add('Vista Viewpoint Users') | Out-Null
 	$ADGroups.add('XenApp75_Users') | Out-Null

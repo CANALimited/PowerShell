@@ -71,26 +71,39 @@ function Add-EnergySafetyAdvisor
 	Write-Debug "Adding groups to the Array"
 	Write-Verbose "Adding groups to the Array"
 	
+	$ADGroups.add('rfa.Energy') | Out-Null
+	$ADGroups.add('stfa.Energy.Archive.READ') | Out-Null
+	$ADGroups.add('stfa.Energy.Engineering.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Administrative.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Procurement.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.READ') | Out-Null
+
+	$ADGroups.add('CANA Energy Users') | Out-Null
 	$ADGroups.add('All Users') | Out-Null
-	$ADGroups.add('Ace_DR_R_Sec') | Out-Null
-	$ADGroups.add('Ace_Sec') | Out-Null
+	$ADGroups.add('CANA Energy Safety') | Out-Null
 	$ADGroups.add('CANA FWC Users') | Out-Null
+	$ADGroups.add('CANA Utilities High Voltage Safety') | Out-Null
 	$ADGroups.add('CANA Utilities Incident Reports') | Out-Null
 	$ADGroups.add('CANA Utilities Safety') | Out-Null
 	$ADGroups.add('CANA Utilities Safety Reports') | Out-Null
-	$ADGroups.add('CANA Utilities Users') | Out-Null
+	$ADGroups.add('All CANA Utilities Users') | Out-Null
 	$ADGroups.add('CHV Incident Notification Reports') | Out-Null
+	$ADGroups.add('Drive J - Business') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
 	$ADGroups.add('EXCH_PF_CHV_Calendar_Author') | Out-Null
-	$ADGroups.add('Print_Basement_Sec') | Out-Null
 	$ADGroups.add('Safety_Sec') | Out-Null
 	$ADGroups.add('SP.All.CU.R') | Out-Null
+	$ADGroups.add('SP.Energy.Safety.Team') | Out-Null
 	$ADGroups.add('SP.Utilities.Milage') | Out-Null
 	$ADGroups.add('SP.UtilitiesCert') | Out-Null
+	$ADGroups.add('SP_CUT_Staff') | Out-Null
 	$ADGroups.add('SP_EHS_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Safety_Staff') | Out-Null
+	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null
 	$ADGroups.add('SW_Viewpoint_Users') | Out-Null
+	$ADGroups.add('tfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
+	$ADGroups.add('tfa.CHVProjectJobs.RWED') | Out-Null
 	$ADGroups.add('tfa.Safety.RWED') | Out-Null
 	$ADGroups.add('tfa.SafetyHVU.RWED') | Out-Null
 	$ADGroups.add('tfa.Utilities.RWED') | Out-Null
@@ -99,7 +112,6 @@ function Add-EnergySafetyAdvisor
 	$ADGroups.add('Vista Viewpoint Users') | Out-Null
 	$ADGroups.add('XenApp75_Users') | Out-Null
 	$ADGroups.add('XenApp75_Viewpoint_Prod') | Out-Null
-	
 	
 	Write-Debug "Array contains $ADGroups"
 	Write-Verbose "Added list of groups to array"

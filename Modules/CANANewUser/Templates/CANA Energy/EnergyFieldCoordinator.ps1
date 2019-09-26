@@ -71,7 +71,6 @@ function Add-EnergyFieldCoordinator
 	$ADGroups.add('CANA Utilities Users') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
 	$ADGroups.add('Mbx.Locates') | Out-Null
-	$ADGroups.add('Plotter Access CUT') | Out-Null
 	$ADGroups.add('SP_CUT_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Staff') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null
@@ -81,8 +80,14 @@ function Add-EnergyFieldCoordinator
 	$ADGroups.add('tfa.Utilities.ProjectSummaries&References.RWED') | Out-Null
 	$ADGroups.add('tfa.Utilities.RWED') | Out-Null
 	$ADGroups.add('tfa.UtilitiesDR.RWED') | Out-Null
-	
-	
+
+	$ADGroups.add('rfa.Energy') | Out-Null
+	$ADGroups.add('stfa.Energy.Archive.READ') | Out-Null
+	$ADGroups.add('stfa.Energy.Engineering.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Administrative.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Procurement.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.READ') | Out-Null
+
 	Write-Debug "Array contains $ADGroups"
 	Write-Verbose "Added list of groups to array"
 	

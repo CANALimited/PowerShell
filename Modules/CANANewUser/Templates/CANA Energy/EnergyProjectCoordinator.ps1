@@ -73,27 +73,10 @@ function Add-EnergyCADDDesigner
 
 	$ADGroups.add('rfa.Energy') | Out-Null
 	$ADGroups.add('stfa.Energy.Archive.READ') | Out-Null
-	$ADGroups.add('stfa.Energy.Archive.RWED') | Out-Null
-	$ADGroups.add('stfa.Energy.CIP.READ') | Out-Null
-	$ADGroups.add('stfa.Energy.CIP.RWED') | Out-Null
-	$ADGroups.add('stfa.Energy.Engineering.READ') | Out-Null
-	$ADGroups.add('stfa.Energy.Engineering.RWED') | Out-Null
-	$ADGroups.add('stfa.Energy.Regulatory.READ') | Out-Null
-	$ADGroups.add('stfa.Energy.Regulatory.RWED') | Out-Null
 	$ADGroups.add('tfa.Energy.Administrative.READ') | Out-Null
-	$ADGroups.add('tfa.Energy.Administrative.RWED') | Out-Null
-	$ADGroups.add('tfa.Energy.BusnessDevelopment.READ') | Out-Null
-	$ADGroups.add('tfa.Energy.BusnessDevelopment.RWED') | Out-Null
-	$ADGroups.add('tfa.Energy.Drafting.READ') | Out-Null
-	$ADGroups.add('tfa.Energy.Drafting.RWED') | Out-Null
-	$ADGroups.add('tfa.Energy.Management.READ') | Out-Null
-	$ADGroups.add('tfa.Energy.Management.RWED') | Out-Null
-	$ADGroups.add('tfa.Energy.Procurement.READ') | Out-Null
 	$ADGroups.add('tfa.Energy.Procurement.RWED') | Out-Null
-	$ADGroups.add('tfa.Energy.ProjectControls.READ') | Out-Null
 	$ADGroups.add('tfa.Energy.ProjectControls.RWED') | Out-Null
 	$ADGroups.add('tfa.Energy.READ') | Out-Null
-	$ADGroups.add('tfa.Energy.RWED') | Out-Null
 	
 	$ADGroups.add('All Users') | Out-Null
 	$ADGroups.add('CANA Energy Users') | Out-Null

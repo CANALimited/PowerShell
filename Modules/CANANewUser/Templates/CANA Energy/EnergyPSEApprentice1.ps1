@@ -50,7 +50,12 @@ function Add-EnergyPSEApprentice
 	$ADGroups.add('SP_CHV_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Staff') | Out-Null
 
-	
+	$ADGroups.add('rfa.Energy') | Out-Null
+	$ADGroups.add('stfa.Energy.Archive.READ') | Out-Null
+	$ADGroups.add('stfa.Energy.Engineering.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Administrative.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Procurement.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.READ') | Out-Null
 	
 	Write-Debug "Array contains $ADGroups"
 	Write-Verbose "Added list of groups to array"

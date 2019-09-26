@@ -83,22 +83,23 @@ function Add-EnergyWarehouseCoordinator
 	Write-Debug "Adding groups to the Array"
 	Write-Verbose "Adding groups to the Array"
 	
+
+	$ADGroups.add('rfa.Energy') | Out-Null
+	$ADGroups.add('stfa.Energy.Archive.READ') | Out-Null
+	$ADGroups.add('stfa.Energy.Engineering.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Administrative.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Procurement.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.READ') | Out-Null
+
+
 	$ADGroups.add('All Users') | Out-Null
-	$ADGroups.add('371APReviewer') | Out-Null
 	$ADGroups.add('CANA Energy Users') | Out-Null
 	$ADGroups.add('All Head Office Users') | Out-Null
 	$ADGroups.add('CANA Equipment Management') | Out-Null
 	$ADGroups.add('CANA FWC Users') | Out-Null
-	
 	$ADGroups.add('CANA Material Management') | Out-Null
 	$ADGroups.add('CANA Utilities Yard Sign-in') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
-	
-	$ADGroups.add('GSG.HTI.Conac.RW') | Out-Null
-	$ADGroups.add('GSG.HTI.Engineering.RW') | Out-Null
-	$ADGroups.add('GSG.HTI.PanelShop.RO') | Out-Null
-	$ADGroups.add('GSG.HTI.Purchasing.RW') | Out-Null
-	$ADGroups.add('GSG.HTI.Shared.RW') | Out-Null
 	$ADGroups.add('SP.All.CHV.R') | Out-Null
 	$ADGroups.add('SP_CHV_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Staff') | Out-Null

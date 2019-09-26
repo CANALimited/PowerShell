@@ -94,7 +94,6 @@ function Add-EnergySupervisorCivil
 	Write-Verbose "Adding groups to the Array"
 	
 	$ADGroups.add('All Users') | Out-Null
-	$ADGroups.add('371APReviewer') | Out-Null
 	$ADGroups.add('Ace_EmpCerts_R_Sec') | Out-Null
 	$ADGroups.add('Ace_EquipCerts_R_Sec') | Out-Null
 	$ADGroups.add('Ace_Forms_Sec') | Out-Null

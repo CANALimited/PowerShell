@@ -104,11 +104,16 @@ function Add-EnergySafetyMgr
 	Write-Debug "Adding groups to the Array"
 	Write-Verbose "Adding groups to the Array"
 	
+	$ADGroups.add('rfa.Energy') | Out-Null
+	$ADGroups.add('stfa.Energy.Archive.READ') | Out-Null
+	$ADGroups.add('stfa.Energy.Engineering.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Administrative.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Management.RWED') | Out-Null
+	$ADGroups.add('tfa.Energy.Procurement.RWED') | Out-Null
+	$ADGroups.add('tfa.Energy.ProjectControls.RWED') | Out-Null
+	$ADGroups.add('tfa.Energy.READ') | Out-Null
+
 	$ADGroups.add('All Users') | Out-Null
-	$ADGroups.add('361POReceiver') | Out-Null
-	$ADGroups.add('371APReviewer') | Out-Null
-	$ADGroups.add('Ace_Certificates_Sec') | Out-Null
-	$ADGroups.add('Ace_Sec') | Out-Null
 	$ADGroups.add('CANA Energy Users') | Out-Null
 	$ADGroups.add('All Head Office Users') | Out-Null
 	$ADGroups.add('CANA Construction Incident Reports') | Out-Null

@@ -99,42 +99,43 @@ function Add-EnergySafetyAdmin
 	Write-Debug "Adding groups to the Array"
 	Write-Verbose "Adding groups to the Array"
 	
-	$ADGroups.add('All Users') | Out-Null
-	$ADGroups.add('321ProjectAdministrator') | Out-Null
-	$ADGroups.add('Ace_Certificates_Sec') | Out-Null
-	$ADGroups.add('Ace_DR_Sec') | Out-Null
-	$ADGroups.add('Ace_Sec') | Out-Null
+	$ADGroups.add('rfa.Energy') | Out-Null
+	$ADGroups.add('stfa.Energy.Archive.READ') | Out-Null
+	$ADGroups.add('stfa.Energy.Engineering.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Administrative.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Procurement.RWED') | Out-Null
+	$ADGroups.add('tfa.Energy.ProjectControls.RWED') | Out-Null
+	$ADGroups.add('tfa.Energy.READ') | Out-Null
+
 	$ADGroups.add('CANA Energy Users') | Out-Null
 	$ADGroups.add('All Head Office Users') | Out-Null
+	$ADGroups.add('All Users') | Out-Null
+	$ADGroups.add('CANA Energy Safety') | Out-Null
 	$ADGroups.add('CANA FWC Users') | Out-Null
-	
 	$ADGroups.add('CANA Utilities Field Foremen') | Out-Null
 	$ADGroups.add('CANA Utilities High Voltage Safety') | Out-Null
 	$ADGroups.add('CANA Utilities Incident Reports') | Out-Null
 	$ADGroups.add('CANA Utilities Safety') | Out-Null
 	$ADGroups.add('CANA Utilities Safety Reports') | Out-Null
-	$ADGroups.add('CANA Utilities Users') | Out-Null
-	$ADGroups.add('CANA Energy - Engineering') | Out-Null
+	$ADGroups.add('All CANA Utilities Users') | Out-Null
+	$ADGroups.add('CHV Engineering') | Out-Null
 	$ADGroups.add('CHV Incident Notification Reports') | Out-Null
 	$ADGroups.add('CHV Incident Notification Reports - EMS') | Out-Null
 	$ADGroups.add('CHV Incident Notification Reports - Near Miss') | Out-Null
-	$ADGroups.add('CU Safety Committee') | Out-Null
+	$ADGroups.add('CU Safety Committee Group') | Out-Null
 	$ADGroups.add('Email Archiving Enabled') | Out-Null
 	$ADGroups.add('EXCH_PF_CHV_Calendar_Author') | Out-Null
 	$ADGroups.add('FWC52TimeKeeper') | Out-Null
-	$ADGroups.add('FWC55TimeKeeper') | Out-Null
-	
-	$ADGroups.add('Print_Basement_Sec') | Out-Null
 	$ADGroups.add('Safety.Utilities.Orientation') | Out-Null
 	$ADGroups.add('Safety_Sec') | Out-Null
 	$ADGroups.add('Safety_Sec_Modify') | Out-Null
 	$ADGroups.add('Salaried Employees') | Out-Null
 	$ADGroups.add('SP.All.CU.R') | Out-Null
 	$ADGroups.add('SP.ConstructionCert') | Out-Null
+	$ADGroups.add('SP.Energy.Safety.Team') | Out-Null
 	$ADGroups.add('SP_CUT_Staff') | Out-Null
 	$ADGroups.add('SP_Energy_Safety_Staff') | Out-Null
 	$ADGroups.add('SP_Safety_Staff') | Out-Null
-	$ADGroups.add('Stampede RSVP') | Out-Null
 	$ADGroups.add('stfa.CHVProjectJobs.JobNumber.RWED') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null
 	$ADGroups.add('SW_Viewpoint_Users') | Out-Null
@@ -152,10 +153,8 @@ function Add-EnergySafetyAdmin
 	$ADGroups.add('tfa.Utilities.Scans.RWED') | Out-Null
 	$ADGroups.add('Viewpoint Users') | Out-Null
 	$ADGroups.add('Vista Viewpoint Users') | Out-Null
-	$ADGroups.add('XenApp_BO') | Out-Null
 	$ADGroups.add('XenApp75_Users') | Out-Null
 	$ADGroups.add('XenApp75_Viewpoint_Prod') | Out-Null
-	
 	
 	Write-Debug "Array contains $ADGroups"
 	Write-Verbose "Added list of groups to array"

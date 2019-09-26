@@ -48,11 +48,18 @@ function Add-EnergyUtilityWorker
 	Write-Debug "Adding groups to the Array"
 	Write-Verbose "Adding groups to the Array"
 	
+	$ADGroups.add('rfa.Energy') | Out-Null
+	$ADGroups.add('stfa.Energy.Archive.READ') | Out-Null
+	$ADGroups.add('stfa.Energy.Engineering.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Administrative.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.Procurement.READ') | Out-Null
+	$ADGroups.add('tfa.Energy.READ') | Out-Null
+	
 	$ADGroups.add('All Users') | Out-Null
 	$ADGroups.add('SP_CUT_Staff') | Out-Null
-	$ADGroups.add('CANA Utilities iOS Users') | Out-Null
 	$ADGroups.add('CANA Utilities Users') | Out-Null
 	$ADGroups.add('SW_FWC_Users') | Out-Null
+	$ADGroups.add('SP_Energy_Staff') | Out-Null
 
 	
 	
